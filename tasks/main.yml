@@ -1,0 +1,16 @@
+---
+# tasks file for rundeck
+- name: create rundeck directory
+  file:
+    path: "{{ rdeckbase }}"
+    state: directory
+
+- name: download rundeck
+  get_url:
+    url: "{{ url }}/{{ rundeck }}"
+    dest: "{{ rdeckbase }}/{{ rundeck }}"
+
+- name: start rundeck
+  shell: java -Xmx{{ xmx }} -jar {{ rdeckbase }}/{{ rundeck }} &
+  args:
+    creates: "{{ rdeckbase }}/server/work"

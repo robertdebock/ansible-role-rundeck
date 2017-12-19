@@ -1,0 +1,28 @@
+---
+# defaults file for rundeck
+url: "http://dl.bintray.com/rundeck/rundeck-maven/"
+rundeck: rundeck-launcher-2.10.1.jar
+
+# Maybe this is not required.
+# maxpermsize: 256m
+xmx: 1024m
+
+serverhttpport: 4440
+serverhttpsport: 4443
+serverhttphost: 0.0.0.0
+serverhostname: "{{ ansible_fqdn }}"
+serverwebcontext: "/"
+rdeckbase: /opt/rundeck
+serverdatastorepath: /var/rundeck
+defaultusername: admin
+defaultuserpassword: admin
+# rundeckjaaslogin: true/false
+# loginmodulename: unknown
+# loginmodule.confname:
+rundeckconfigname: /etc/rundeck/rundeck.conf
+rundecksslconfig: /etc/rundeck/ssl.conf
+# rundeckjettyconnectorforwarded: false
+# rundeckjettyconnectorsslexcludedprotocols: "SSLv3"
+# rundeckjettyconnectorsslincludedprotocols:
+# rundeckjettyconnectorsslexcludedciphersuites:
+# rundeckjettyconnectorsslincludedciphersuites:
