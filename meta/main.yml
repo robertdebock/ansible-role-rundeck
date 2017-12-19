@@ -38,4 +38,4 @@ galaxy_info:
     - Ubuntu
 
 dependencies:
-  - robertdebock.java
+  - robertdebock.bootstrap
