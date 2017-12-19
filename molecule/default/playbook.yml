@@ -7,4 +7,4 @@
   roles:
     - role: robertdebock.java
       java_version: 8
-    - role: robertdebock.rundeck
+    - role: ansible-role-rundeck
