@@ -20,8 +20,6 @@ platforms:
     box: fedora/26-cloud-base
   - name: fedora-27-cloud-base
     box: fedora/27-cloud-base
-  - name: ubuntu-trusty
-    box: ubuntu/trusty64
   - name: ubuntu-zesty
     box: ubuntu/zesty64
 provisioner:
