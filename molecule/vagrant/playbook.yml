@@ -5,6 +5,6 @@
   become: yes
 
   roles:
-    - role: ansible-role-java
+    - role: robertdebock.java
       java_version: 8
     - role: ansible-role-rundeck
