@@ -10,17 +10,17 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: centos-6
+  - name: rundeck-centos-6
     box: centos/6
-  - name: centos-7
+  - name: rundeck-centos-7
     box: centos/7
-  - name: debian-buster64
+  - name: rundeck-debian-buster64
     box: desc/buster64
-  - name: fedora-26-cloud-base
+  - name: rundeck-fedora-26-cloud-base
     box: fedora/26-cloud-base
-  - name: fedora-27-cloud-base
+  - name: rundeck-fedora-27-cloud-base
     box: fedora/27-cloud-base
-  - name: ubuntu-zesty
+  - name: rundeck-ubuntu-zesty
     box: ubuntu/zesty64
 provisioner:
   name: ansible

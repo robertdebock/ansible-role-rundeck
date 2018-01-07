@@ -8,23 +8,23 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: alpine-3.5
+  - name: rundeck-alpine-3.5
     image: alpine:3.5
-  - name: alpine-3.6
+  - name: rundeck-alpine-3.6
     image: alpine:3.6
-  - name: centos-6
+  - name: rundeck-centos-6
     image: centos:6
-  - name: centos-7
+  - name: rundeck-centos-7
     image: centos:7
-  - name: debian-buster
+  - name: rundeck-debian-buster
     image: debian:buster
-  - name: fedora-26
+  - name: rundeck-fedora-26
     image: fedora:26
-  - name: fedora-27
+  - name: rundeck-fedora-27
     image: fedora:27
-  - name: ubuntu-zesty
+  - name: rundeck-ubuntu-zesty
     image: ubuntu:zesty
-  - name: ubuntu-artful
+  - name: rundeck-ubuntu-artful
     image: ubuntu:artful
 provisioner:
   name: ansible
