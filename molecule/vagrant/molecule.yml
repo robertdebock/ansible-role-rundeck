@@ -20,8 +20,8 @@ platforms:
     box: fedora/26-cloud-base
   - name: rundeck-fedora-27-cloud-base
     box: fedora/27-cloud-base
-  - name: rundeck-ubuntu-zesty
-    box: ubuntu/zesty64
+  - name: rundeck-ubuntu-artful
+    box: ubuntu/artful64
 provisioner:
   name: ansible
   lint:

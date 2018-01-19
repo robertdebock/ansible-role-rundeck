@@ -22,8 +22,8 @@ platforms:
     image: fedora:26
   - name: rundeck-fedora-27
     image: fedora:27
-  - name: rundeck-ubuntu-zesty
-    image: ubuntu:zesty
+  - name: rundeck-ubuntu-trusty
+    image: ubuntu:trusty
   - name: rundeck-ubuntu-artful
     image: ubuntu:artful
 provisioner:
