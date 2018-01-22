@@ -18,8 +18,6 @@ platforms:
     image: centos:6
   - name: rundeck-centos-7
     image: centos:7
-  - name: rundeck-debian-jessie
-    image: debian:jessie
   - name: rundeck-debian-stretch
     image: debian:stretch
   - name: rundeck-debian-buster
@@ -32,9 +30,6 @@ platforms:
     image: opensuse:42.2
   - name: rundeck-opensuse-42.3
     image: opensuse:42.3
-    # 14.04 LTS
-  - name: rundeck-ubuntu-trusty
-    image: ubuntu:trusty
     # 16.04 LTS
   - name: rundeck-ubuntu-xenial
     image: ubuntu:xenial
