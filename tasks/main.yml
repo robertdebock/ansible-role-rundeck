@@ -11,7 +11,7 @@
     dest: "{{ rdeckbase }}/{{ rundeck }}"
 
 - name: start rundeck
-  shell: java -Xmx{{ xmx }} -jar {{ rdeckbase }}/{{ rundeck }} &
+  shell: nohup java -Xmx{{ xmx }} -jar {{ rdeckbase }}/{{ rundeck }} < /dev/null &
   args:
     creates: "{{ rdeckbase }}/server/work"
   register: output
