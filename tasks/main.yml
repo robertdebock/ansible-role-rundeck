@@ -14,3 +14,8 @@
   shell: java -Xmx{{ xmx }} -jar {{ rdeckbase }}/{{ rundeck }} &
   args:
     creates: "{{ rdeckbase }}/server/work"
+  register: output
+
+- name: show output
+  debug:
+    var: output
