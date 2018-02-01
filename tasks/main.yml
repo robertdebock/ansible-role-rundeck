@@ -14,8 +14,3 @@
   shell: nohup java -Xmx{{ xmx }} -jar {{ rdeckbase }}/{{ rundeck }} < /dev/null &
   args:
     creates: "{{ rdeckbase }}/server/work"
-  register: output
-
-- name: show output
-  debug:
-    var: output
