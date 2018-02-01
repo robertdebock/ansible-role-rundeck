@@ -10,32 +10,32 @@ lint:
 platforms:
   - name: rundeck-archlinux
     image: base/archlinux
-  - name: rundeck-alpine-3.6
-    image: alpine:3.6
-  - name: rundeck-alpine-3.7
-    image: alpine:3.7
-  - name: rundeck-centos-6
-    image: centos:6
-  - name: rundeck-centos-7
-    image: centos:7
-  - name: rundeck-debian-stretch
-    image: debian:stretch
-  - name: rundeck-debian-buster
-    image: debian:buster
-  - name: rundeck-fedora-26
-    image: fedora:26
-  - name: rundeck-fedora-27
-    image: fedora:27
-  - name: rundeck-opensuse-42.2
-    image: opensuse:42.2
-  - name: rundeck-opensuse-42.3
-    image: opensuse:42.3
-    # 16.04 LTS
-  - name: rundeck-ubuntu-xenial
-    image: ubuntu:xenial
-    # 17.04
-  - name: rundeck-ubuntu-artful
-    image: ubuntu:artful
+  # - name: rundeck-alpine-3.6
+  #   image: alpine:3.6
+  # - name: rundeck-alpine-3.7
+  #   image: alpine:3.7
+  # - name: rundeck-centos-6
+  #   image: centos:6
+  # - name: rundeck-centos-7
+  #   image: centos:7
+  # - name: rundeck-debian-stretch
+  #   image: debian:stretch
+  # - name: rundeck-debian-buster
+  #   image: debian:buster
+  # - name: rundeck-fedora-26
+  #   image: fedora:26
+  # - name: rundeck-fedora-27
+  #   image: fedora:27
+  # - name: rundeck-opensuse-42.2
+  #   image: opensuse:42.2
+  # - name: rundeck-opensuse-42.3
+  #   image: opensuse:42.3
+  #   # 16.04 LTS
+  # - name: rundeck-ubuntu-xenial
+  #   image: ubuntu:xenial
+  #   # 17.04
+  # - name: rundeck-ubuntu-artful
+  #   image: ubuntu:artful
 provisioner:
   name: ansible
   lint:
