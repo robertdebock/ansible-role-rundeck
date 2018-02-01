@@ -3,9 +3,8 @@
 url: "http://dl.bintray.com/rundeck/rundeck-maven/"
 rundeck: rundeck-launcher-2.10.1.jar
 
-# Maybe this is not required.
-# maxpermsize: 256m
-xmx: 1024m
+# The Xmx memory size.
+xmx: 512m
 
 serverhttpport: 4440
 serverhttpsport: 4443
