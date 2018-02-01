@@ -14,7 +14,12 @@ cache:
 install:
   - pip install --upgrade pip
   - pip install ansible"${ansible_version}"
-  - pip install molecule
+  - pip install molecule --scenario-name alpine
+  - pip install molecule --scenario-name centos
+  - pip install molecule --scenario-name debian
+  - pip install molecule --scenario-name fedora
+  - pip install molecule --scenario-name opensuse
+  - pip install molecule --scenario-name ubuntu
   - pip install docker-py
 
 script:
