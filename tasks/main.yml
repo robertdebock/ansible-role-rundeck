@@ -1,5 +1,11 @@
 ---
 # tasks file for rundeck
+- name: install requirements
+  package:
+    name: procps
+  when:
+    - ansible_distribution == "Debian"
+
 - name: create rundeck directories
   file:
     path: "{{ item }}"
