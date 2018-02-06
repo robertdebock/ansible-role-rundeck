@@ -8,10 +8,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-    # 16.04 LTS
+  # 16.04 LTS
   - name: rundeck-ubuntu-xenial
     image: ubuntu:xenial
-    # 17.04
+  # 17.04
   - name: rundeck-ubuntu-artful
     image: ubuntu:artful
 provisioner:

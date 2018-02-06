@@ -1,16 +1,30 @@
 ---
 # tasks file for rundeck
-- name: create rundeck directory
+- name: create rundeck directories
   file:
-    path: "{{ rdeckbase }}"
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - "{{ rundeck_rdeckbase }}"
 
 - name: download rundeck
   get_url:
-    url: "{{ url }}/{{ rundeck }}"
-    dest: "{{ rdeckbase }}/{{ rundeck }}"
+    url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
+    dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
+  notify:
+    - start rundeck
+    - wait until unpacked
+    - stop rundeck
+
+- name: flush handlers
+  meta: flush_handlers
+
+- name: configure rundeck
+  lineinfile:
+    path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+    line: "framework.rundeck.url={{ rundeck_url }}"
 
 - name: start rundeck
-  shell: nohup java -Xmx{{ xmx }} -jar {{ rdeckbase }}/{{ rundeck }} < /dev/null &
+  shell: nohup java -Xmx{{ rundeck_xmx }} -jar {{ rundeck_rdeckbase }}/{{ rundeck_jar }} < /dev/null &
   args:
-    creates: "{{ rdeckbase }}/server/work"
+    creates: "{{ rundeck_rdeckbase }}/server/work"

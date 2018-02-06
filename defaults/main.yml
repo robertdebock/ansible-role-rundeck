@@ -1,27 +1,26 @@
 ---
 # defaults file for rundeck
-url: "http://dl.bintray.com/rundeck/rundeck-maven/"
-rundeck: rundeck-launcher-2.10.1.jar
+rundeck_url: http://localhost:4440
 
 # The Xmx memory size.
-xmx: 512m
+rundeck_xmx: 512m
 
-serverhttpport: 4440
-serverhttpsport: 4443
-serverhttphost: 0.0.0.0
-serverhostname: "{{ ansible_fqdn }}"
-serverwebcontext: "/"
-rdeckbase: /opt/rundeck
-serverdatastorepath: /var/rundeck
-defaultusername: admin
-defaultuserpassword: admin
-# rundeckjaaslogin: true/false
-# loginmodulename: unknown
-# loginmodule.confname:
-rundeckconfigname: /etc/rundeck/rundeck.conf
-rundecksslconfig: /etc/rundeck/ssl.conf
-# rundeckjettyconnectorforwarded: false
-# rundeckjettyconnectorsslexcludedprotocols: "SSLv3"
-# rundeckjettyconnectorsslincludedprotocols:
-# rundeckjettyconnectorsslexcludedciphersuites:
-# rundeckjettyconnectorsslincludedciphersuites:
+# rundeck_serverhttpport: 4440
+# rundeck_serverhttpsport: 4443
+# rundeck_serverhttphost: 0.0.0.0
+# rundeck_serverhostname: "{{ ansible_fqdn }}"
+# rundeck_serverwebcontext: "/"
+rundeck_rdeckbase: /opt/rundeck
+# rundeck_serverdatastorepath: /var/rundeck
+# rundeck_defaultusername: admin
+# rundeck_defaultuserpassword: admin
+# rundeck_rundeckjaaslogin: true/false
+# rundeck_loginmodulename: unknown
+# rundeck_loginmodule.confname:
+# rundeck_rundeckconfigname: /etc/rundeck/rundeck.conf
+# rundeck_rundecksslconfig: /etc/rundeck/ssl.conf
+# rundeck_rundeckjettyconnectorforwarded: false
+# rundeck_rundeckjettyconnectorsslexcludedprotocols: "SSLv3"
+# rundeck_rundeckjettyconnectorsslincludedprotocols:
+# rundeck_rundeckjettyconnectorsslexcludedciphersuites:
+# rundeck_rundeckjettyconnectorsslincludedciphersuites:
