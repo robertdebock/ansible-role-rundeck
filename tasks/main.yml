@@ -1,11 +1,5 @@
 ---
 # tasks file for rundeck
-- name: install requirements
-  package:
-    name: procps
-  when:
-    - ( ansible_distribution == "Debian" or ansible_distribution == "Fedora" )
-
 - name: create rundeck directories
   file:
     path: "{{ item }}"
@@ -22,6 +16,21 @@
     - wait until unpacked
     - stop rundeck
 
+- name: register rundeck to a sysvinit system
+  template:
+    src: templates/rundeck.j2
+    dest: "/etc/init.d/rundeck"
+    mode: 0750
+  when:
+    - ansible_service_mgr == "sysvinit" or ansible_service_mgr == "upstart"
+
+- name: register rundeck to a systemd system
+  template:
+    src: templates/rundeck.service.j2
+    dest: /etc/systemd/system/rundeck.service
+  when:
+    - ansible_service_mgr == "systemd"
+
 - name: flush handlers
   meta: flush_handlers
 
@@ -32,6 +41,7 @@
   notify: restart rundeck
 
 - name: start rundeck
-  shell: nohup java -Xmx{{ rundeck_xmx }} -jar {{ rundeck_rdeckbase }}/{{ rundeck_jar }} < /dev/null &
-  args:
-    creates: "{{ rundeck_rdeckbase }}/server/work"
+  service:
+    name: rundeckd
+    state: started
+    enabled: true

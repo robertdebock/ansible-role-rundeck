@@ -1,0 +1,53 @@
+#!/bin/bash
+{{ ansible_managed | comment }}
+#
+#	/etc/init.d/rundeck
+#
+#	rundeck
+#
+# chkconfig: 2345 20 80
+# description: rundeck
+
+# Source function library.
+if [ -f /etc/init.d/functions ] ; then
+  . /etc/init.d/functions
+fi
+
+start() {
+  echo -n "Starting rundeck: "
+  returncode=$({{ rundeck_rdeckbase }}/server/sbin/rundeckd start)
+  touch /var/lock/subsys/rundeck
+  return ${returncode}
+}
+
+stop() {
+  echo -n "Stopping rundeck: "
+  returncode=$({{ rundeck_rdeckbase }}/server/sbin/rundeckd stop)
+  rm -f /var/lock/subsys/rundeck
+  return ${returncode}
+}
+
+case "$1" in
+  start)
+    start
+  ;;
+  stop)
+    stop
+  ;;
+  status)
+    echo "not supported."
+  ;;
+  restart)
+    stop
+    start
+  ;;
+  reload)
+    echo "not supported."
+  ;;
+    *)
+  echo "Usage: <servicename> {start|stop|status|restart|reload}"
+  exit 1
+  ;;
+esac
+
+exit $?

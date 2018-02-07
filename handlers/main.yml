@@ -1,19 +1,20 @@
 ---
 # handlers file for rundeck
 - name: start rundeck
-  shell: nohup java -Xmx{{ rundeck_xmx }} -jar {{ rundeck_rdeckbase }}/{{ rundeck_jar }} < /dev/null &
+  service:
+    name: rundeck
+    state: started
 
 - name: wait until unpacked
   wait_for:
     path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
 
 - name: stop rundeck
-  command: pkill java
+  service:
+    name: rundeck
+    state: stopped
 
 - name: restart rundeck
-  debug:
-    msg: "Restarting rundeck"
-  changed_when: yes
-  notify:
-    - stop rundeck
-    - start rundeck
+  service:
+    name: rundeck
+    state: restarted
