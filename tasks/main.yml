@@ -4,7 +4,7 @@
   package:
     name: procps
   when:
-    - ansible_distribution == "Debian"
+    - ( ansible_distribution == "Debian" or ansible_distribution == "Fedora" )
 
 - name: create rundeck directories
   file:
