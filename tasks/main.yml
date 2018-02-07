@@ -27,7 +27,7 @@
 
 - name: configure rundeck
   lineinfile:
-    path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+    dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
     line: "framework.rundeck.url={{ rundeck_url }}"
 
 - name: start rundeck
