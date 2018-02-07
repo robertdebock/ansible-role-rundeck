@@ -29,6 +29,7 @@
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
     line: "framework.rundeck.url={{ rundeck_url }}"
+  notify: restart rundeck
 
 - name: start rundeck
   shell: nohup java -Xmx{{ rundeck_xmx }} -jar {{ rundeck_rdeckbase }}/{{ rundeck_jar }} < /dev/null &

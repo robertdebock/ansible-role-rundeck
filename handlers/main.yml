@@ -9,3 +9,11 @@
 
 - name: stop rundeck
   command: pkill java
+
+- name: restart rundeck
+  debug:
+    msg: "Restarting rundeck"
+  changed_when: yes
+  notify:
+    - stop rundeck
+    - start rundeck
