@@ -12,7 +12,7 @@
     url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
     dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
   notify:
-    - start rundeck
+    - unpack rundeck
     - wait until unpacked
     - stop rundeck
 
@@ -30,18 +30,29 @@
     dest: /etc/systemd/system/rundeck.service
   when:
     - ansible_service_mgr == "systemd"
+  notify:
+    - systemd daemon reload
 
 - name: flush handlers
   meta: flush_handlers
 
-- name: configure rundeck
+- name: configure rundeck framework
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
     line: "framework.rundeck.url={{ rundeck_url }}"
   notify: restart rundeck
 
+- name: configure rundeck profile
+  lineinfile:
+    dest: "{{ rundeck_rdeckbase }}/etc/profile"
+    line: 'export RDECK_JVM="$RDECK_JVM -Xmx{{ rundeck_xmx }}m -Xms{{ rundeck_xms }}m -XX:MaxMetaspaceSize={{ rundeck_maxmetaspacesize }}m -server"'
+    regexp: '^export RDECK_JVM='
+  notify: restart rundeck
+
 - name: start rundeck
   service:
-    name: rundeckd
+    name: rundeck
     state: started
     enabled: true
+  when:
+    - ansible_virtualization_type != "docker"

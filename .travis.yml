@@ -25,7 +25,6 @@ script:
   - molecule test --scenario-name opensuse
   - molecule test --scenario-name ubuntu
 
-
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
   email: false

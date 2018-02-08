@@ -9,11 +9,18 @@ Requirements
 ------------
 
 Access to a repository containing packages, likely on the internet.
+A total memory (RAM) size exceeding the setting `rundeck_xmx`.
 
 Role Variables
 --------------
 
-None known.
+See defaults/main for more details:
+
+- rundeck_url
+- rundeck_xmx
+- rundeck_xms
+- rundeck_maxmetaspacesize
+- rundeck_rdeckbase
 
 Dependencies
 ------------

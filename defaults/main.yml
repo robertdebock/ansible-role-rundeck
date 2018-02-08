@@ -2,8 +2,10 @@
 # defaults file for rundeck
 rundeck_url: http://localhost:4440
 
-# The Xmx memory size.
-rundeck_xmx: 512m
+# The Xmx memory size in mb.
+rundeck_xmx: 1024
+rundeck_xms: 256
+rundeck_maxmetaspacesize: 128
 
 # rundeck_serverhttpport: 4440
 # rundeck_serverhttpsport: 4443
