@@ -18,7 +18,6 @@ install:
   - pip install docker-py
 
 script:
-  - molecule test --scenario-name alpine
   - molecule test --scenario-name centos
   - molecule test --scenario-name debian
   - molecule test --scenario-name fedora
