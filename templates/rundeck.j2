@@ -13,16 +13,22 @@ if [ -f /etc/init.d/functions ] ; then
   . /etc/init.d/functions
 fi
 
+# The location where rundeck is installed.
+export RDECK_BASE={{ rundeck_rdeckbase }}
+export RDECK_LAUNCHER={{ rundeck_rdeckbase }}/{{ rundeck_jar }}
+
 start() {
   echo -n "Starting rundeck: "
-  returncode=$({{ rundeck_rdeckbase }}/server/sbin/rundeckd start)
+  {{ rundeck_rdeckbase }}/server/sbin/rundeckd start
+  returncode="${?}"
   touch /var/lock/subsys/rundeck
   return ${returncode}
 }
 
 stop() {
   echo -n "Stopping rundeck: "
-  returncode=$({{ rundeck_rdeckbase }}/server/sbin/rundeckd stop)
+  {{ rundeck_rdeckbase }}/server/sbin/rundeckd stop
+  returncode="${?}"
   rm -f /var/lock/subsys/rundeck
   return ${returncode}
 }
