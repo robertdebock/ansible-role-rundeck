@@ -42,6 +42,12 @@
     line: "framework.rundeck.url={{ rundeck_url }}"
   notify: restart rundeck
 
+- name: configure rundeck
+  lineinfile:
+    dest: "{{ rundeck_rdeckbase }}/etc/rundeck-config.properties"
+    line: "grails.serverURL={{ rundeck_url }}"
+  notify: restart_rundeck
+
 - name: configure rundeck profile
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/profile"
