@@ -46,7 +46,7 @@
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/preferences.properties"
     line: "framework.rundeck.url={{ rundeck_url }}"
-  notify: restart_rundeck
+  notify: restart rundeck
 
 - name: configure rundeck profile
   lineinfile:
