@@ -11,6 +11,7 @@ rundeck_maxmetaspacesize: 128
 
 # The URL where Rundeck will be served on:
 rundeck_url: "http://{{ ansible_fqdn }}:4440/"
+#rundeck_server_web_context: /rundeck
 
 # The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
 rundeck_framework:
