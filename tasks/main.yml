@@ -43,11 +43,16 @@
     regexp: "^framework.server.url"
   notify: restart rundeck
 
-- name: configure rundeck
+- name: configure rundeck preferences
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/preferences.properties"
-    line: "framework.rundeck.url={{ rundeck_url }}"
-    regexp: "^framework.rundeck.url"
+    line: "{{ item.parameter }}={{ item.vaule }}"
+    regexp: "^{{ item.parameter }}"
+  with_items:
+    - parameter: framework.server.url
+      value: "{{ rundeck_url }}"
+    - parameter: framework.rundeck.url
+      value: "{{ rundeck_url }}"
   notify: restart rundeck
 
 - name: configure rundeck profile
