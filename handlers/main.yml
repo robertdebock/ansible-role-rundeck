@@ -6,20 +6,7 @@
     state: started
 
 - name: unpack rundeck
-  command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-2.10.1.jar
-  async: 60
-  poll: 0
-
-- name: wait until unpacked
-  wait_for:
-    path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-
-- name: stop rundeck
-  service:
-    name: rundeck
-    state: stopped
-  when:
-    - ansible_virtualization_type != "docker"
+  command: java -jar --installonly {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar
 
 - name: restart rundeck
   service:

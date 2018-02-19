@@ -13,8 +13,6 @@
     dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
   notify:
     - unpack rundeck
-    - wait until unpacked
-    - stop rundeck
 
 - name: register rundeck to a sysvinit system
   template:
@@ -41,18 +39,6 @@
     dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
     line: "framework.server.url = {{ rundeck_url }}"
     regexp: "^framework.server.url"
-  notify: restart rundeck
-
-- name: configure rundeck preferences
-  lineinfile:
-    dest: "{{ rundeck_rdeckbase }}/etc/preferences.properties"
-    line: "{{ item.parameter }}={{ item.value }}"
-    regexp: "^{{ item.parameter }}"
-  with_items:
-    - parameter: framework.server.url
-      value: "{{ rundeck_url }}"
-    - parameter: framework.rundeck.url
-      value: "{{ rundeck_url }}"
   notify: restart rundeck
 
 - name: configure rundeck profile
