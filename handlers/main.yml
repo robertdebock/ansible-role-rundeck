@@ -6,7 +6,7 @@
     state: started
 
 - name: unpack rundeck
-  command: java -jar --installonly {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar
+  command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar --installonly
 
 - name: restart rundeck
   service:
@@ -18,3 +18,12 @@
 - name: systemd daemon reload
   systemd:
     daemon_reload: yes
+
+- name: configure rundeck framework
+  lineinfile:
+    dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+    line: "{{ item.parameter }} = {{ item.value }}"
+    regexp: "^{{ item.parameter }}"
+  notify: restart rundeck
+  with_items:
+    - "{{ rundeck_framework }}"

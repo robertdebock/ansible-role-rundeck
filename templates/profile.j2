@@ -1,0 +1,33 @@
+RDECK_BASE=/opt/rundeck
+export RDECK_BASE
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/jre
+export JAVA_HOME
+
+PATH=$JAVA_HOME/bin:$RDECK_BASE/tools/bin:$PATH
+export PATH
+
+export JAVA_CMD=$JAVA_HOME/bin/java
+
+if test -n "$JRE_HOME"
+then
+   unset JRE_HOME
+fi
+
+LIBDIR=$RDECK_BASE/tools/lib
+
+CLI_CP=
+for i in `ls $LIBDIR/*.jar`
+do
+ CLI_CP=${CLI_CP}:${i}
+done
+export CLI_CP
+
+#
+# Set min/max heap size
+#
+export RDECK_JVM="$RDECK_JVM -Xmx{{ rundeck_xmx }}m -Xms{{ rundeck_xms }}m -XX:MaxMetaspaceSize={{ rundeck_maxmetaspacesize }}m -server"
+
+export RDECK_SSL_OPTS="-Djavax.net.ssl.trustStore=$RDECK_BASE/etc/truststore -Djavax.net.ssl.trustStoreType=jks -Djava.protocol.handler.pkgs=com.sun.net.ssl.internal.www.protocol"
+
+umask 002

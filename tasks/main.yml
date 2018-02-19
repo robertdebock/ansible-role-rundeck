@@ -6,6 +6,7 @@
     state: directory
   with_items:
     - "{{ rundeck_rdeckbase }}"
+    - "{{ rundeck_rdeckbase }}/etc"
 
 - name: download rundeck
   get_url:
@@ -31,22 +32,19 @@
   notify:
     - systemd daemon reload
 
-- name: flush handlers
+- name: configure rundeck profile
+  template:
+    src: templates/profile.j2
+    dest: "{{ rundeck_rdeckbase }}/etc/profile"
+
+- name: flush_handlers
   meta: flush_handlers
 
-- name: configure rundeck framework
+- name: configure rundeck properties
   lineinfile:
-    dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-    line: "framework.server.url = {{ rundeck_url }}"
-    regexp: "^framework.server.url"
-  notify: restart rundeck
-
-- name: configure rundeck profile
-  lineinfile:
-    dest: "{{ rundeck_rdeckbase }}/etc/profile"
-    line: 'export RDECK_JVM="$RDECK_JVM -Xmx{{ rundeck_xmx }}m -Xms{{ rundeck_xms }}m -XX:MaxMetaspaceSize={{ rundeck_maxmetaspacesize }}m -server"'
-    regexp: '^export RDECK_JVM='
-  notify: restart rundeck
+    dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
+    line: "grails.serverURL={{ rundeck_url }}"
+    regexp: "^grails.serverURL"
 
 - name: start rundeck
   service:
@@ -55,3 +53,5 @@
     enabled: true
   when:
     - ansible_virtualization_type != "docker"
+  notify:
+    - configure rundeck framework

@@ -1,28 +1,44 @@
 ---
 # defaults file for rundeck
-rundeck_url: http://localhost:4440
 
-# The Xmx memory size in mb.
+# Where to install rundeck.
+rundeck_rdeckbase: /opt/rundeck
+
+# The Xmx memory size in mb. (Stored in: "{{ rundeck_rdeckbase }}/etc/profile".)
 rundeck_xmx: 1024
 rundeck_xms: 256
 rundeck_maxmetaspacesize: 128
 
-# rundeck_serverhttpport: 4440
-# rundeck_serverhttpsport: 4443
-# rundeck_serverhttphost: 0.0.0.0
-# rundeck_serverhostname: "{{ ansible_fqdn }}"
-# rundeck_serverwebcontext: "/"
-rundeck_rdeckbase: /opt/rundeck
-# rundeck_serverdatastorepath: /var/rundeck
-# rundeck_defaultusername: admin
-# rundeck_defaultuserpassword: admin
-# rundeck_rundeckjaaslogin: true/false
-# rundeck_loginmodulename: unknown
-# rundeck_loginmodule.confname:
-# rundeck_rundeckconfigname: /etc/rundeck/rundeck.conf
-# rundeck_rundecksslconfig: /etc/rundeck/ssl.conf
-# rundeck_rundeckjettyconnectorforwarded: false
-# rundeck_rundeckjettyconnectorsslexcludedprotocols: "SSLv3"
-# rundeck_rundeckjettyconnectorsslincludedprotocols:
-# rundeck_rundeckjettyconnectorsslexcludedciphersuites:
-# rundeck_rundeckjettyconnectorsslincludedciphersuites:
+# The URL where Rundeck will be served on:
+rundeck_url: "http://{{ ansible_fqdn }}:4440/"
+
+# The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
+rundeck_framework:
+  - parameter: framework.server.hostname
+    value: "{{ ansible_fqdn }}"
+  - parameter: framework.server.name
+    value: "{{ ansible_fqdn }}"
+  - parameter: framework.projects.dir
+    value: "{{ rundeck_rdeckbase }}/projects"
+  - parameter: framework.var.dir
+    value: "{{ rundeck_rdeckbase }}/var"
+  - parameter: framework.logs.dir
+    value: "{{ rundeck_rdeckbase }}/var/logs"
+  # - parameter: "framework.server.username"
+  #   value: unset
+  # - parameter: "framework.server.password"
+  #   value: unset
+  - parameter: framework.rundeck.url
+    value: "{{ rundeck_url }}"
+  # - parameter: "framework.ssh.keypath"
+  #   value: unset
+  # - parameter: "framework.ssh.user"
+  #   value: unset
+  - parameter: framework.ssh-connect-timeout
+    value: 0
+  - parameter: framework.ssh-command-timeout
+    value: 0
+  # - parameter: "framework.log.dispatch.console.format"
+  #   value: unset
+  - parameter: framework.rundeck.execution.script.tokenexpansion.enabled
+    value: true
