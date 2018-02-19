@@ -39,13 +39,15 @@
 - name: configure rundeck framework
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-    line: "framework.server.url={{ rundeck_url }}"
+    line: "framework.server.url = {{ rundeck_url }}"
+    regexp: "^framework.server.url"
   notify: restart rundeck
 
 - name: configure rundeck
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/preferences.properties"
     line: "framework.rundeck.url={{ rundeck_url }}"
+    regexp: "^framework.rundeck.url"
   notify: restart rundeck
 
 - name: configure rundeck profile
