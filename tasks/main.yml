@@ -46,7 +46,7 @@
 - name: configure rundeck preferences
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/preferences.properties"
-    line: "{{ item.parameter }}={{ item.vaule }}"
+    line: "{{ item.parameter }}={{ item.value }}"
     regexp: "^{{ item.parameter }}"
   with_items:
     - parameter: framework.server.url
