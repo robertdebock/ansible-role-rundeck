@@ -1,4 +1,4 @@
 ---
 # vars file for rundeck
 rundeck_download_url: "http://dl.bintray.com/rundeck/rundeck-maven/"
-rundeck_jar: rundeck-launcher-2.10.1.jar
+rundeck_jar: rundeck-launcher-2.10.6.jar
