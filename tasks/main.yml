@@ -46,6 +46,15 @@
     line: "grails.serverURL={{ rundeck_url }}"
     regexp: "^grails.serverURL"
 
+- name: configure rundeck framework
+  lineinfile:
+    dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+    line: "{{ item.parameter }} = {{ item.value }}"
+    regexp: "^{{ item.parameter }}"
+  notify: restart rundeck
+  with_items:
+    - "{{ rundeck_framework }}"
+
 - name: start rundeck
   service:
     name: rundeck
@@ -53,5 +62,3 @@
     enabled: true
   when:
     - ansible_virtualization_type != "docker"
-  notify:
-    - configure rundeck framework
