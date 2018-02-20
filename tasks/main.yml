@@ -46,15 +46,12 @@
     line: "grails.serverURL={{ rundeck_url }}"
     regexp: "^grails.serverURL"
 
-- name: create rundeck framework file
-  file:
-    dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-
 - name: configure rundeck framework
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
+    create: yes
   notify: restart rundeck
   with_items:
     - "{{ rundeck_framework }}"
