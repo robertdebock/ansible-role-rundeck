@@ -26,8 +26,8 @@ export CLI_CP
 #
 # Set min/max heap size
 #
-export RDECK_JVM="$RDECK_JVM -Xmx{{ rundeck_xmx }}m -Xms{{ rundeck_xms }}m -XX:MaxMetaspaceSize={{ rundeck_maxmetaspacesize }}m -server"
+export RDECK_JVM="$RDECK_JVM -Xmx{{ rundeck_xmx }}m -Xms{{ rundeck_xms }}m -XX:MaxMetaspaceSize={{ rundeck_maxmetaspacesize }}m -server {% if rundeck_server_web_context %}-Dserver.web.context={{rundeck_server_web_context}}{% endif %}"
 
-export RDECK_SSL_OPTS="-Djavax.net.ssl.trustStore=$RDECK_BASE/etc/truststore -Djavax.net.ssl.trustStoreType=jks -Djava.protocol.handler.pkgs=com.sun.net.ssl.internal.www.protocol {% if rundeck_server_web_context %}-Dserver.web.context={{rundeck_server_web_context}}{% endif %}"
+export RDECK_SSL_OPTS="-Djavax.net.ssl.trustStore=$RDECK_BASE/etc/truststore -Djavax.net.ssl.trustStoreType=jks -Djava.protocol.handler.pkgs=com.sun.net.ssl.internal.www.protocol"
 
 umask 002
