@@ -39,19 +39,22 @@
     - systemd daemon reload
 
 - name: unpack rundeck
-  service:
-    name: rundeck
-    state: started
+  command: java -jar rundeck-launcher-2.10.6.jar
+  args:
+    chdir: "{{ rundeck_rdeckbase }}"
+    creates: "{{ rundeck_rdeckbase }}/server"
+  async: 1
+  poll: 0
   notify:
     - wait until unpacked
+
+- name: flush_handlers
+  meta: flush_handlers
 
 # - name: configure rundeck profile
 #   template:
 #     src: templates/profile.j2
 #     dest: "{{ rundeck_rdeckbase }}/etc/profile"
-
-- name: flush_handlers
-  meta: flush_handlers
 
 - name: configure rundeck properties
   lineinfile:

@@ -2,18 +2,23 @@
 # handlers file for rundeck
 - name: wait until unpacked
   wait_for:
-    path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-  notify: stop rundeck
+    path: "{{ rundeck_rdeckbase }}/server"
+  notify:
+    - stop rundeck
 
 - name: start rundeck
   service:
     name: rundeck
     state: started
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: stop rundeck
   service:
     name: rundeck
     state: stopped
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: restart rundeck
   service:
