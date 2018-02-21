@@ -13,6 +13,10 @@ rundeck_maxmetaspacesize: 128
 rundeck_url: "http://{{ ansible_fqdn }}:4440/"
 rundeck_server_web_context: /
 
+rundeck_config:
+  - parameter: grails.serverURL
+    value: {{ rundeck_url }}
+
 # The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
 rundeck_framework:
   - parameter: framework.server.hostname

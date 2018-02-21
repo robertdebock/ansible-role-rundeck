@@ -52,9 +52,11 @@
 - name: configure rundeck properties
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
-    line: "grails.serverURL={{ rundeck_url }}"
-    regexp: "^grails.serverURL"
+    line: "{{ item.parameter }}={{ item.value }}"
+    regexp: "^{{ item.parameter }}"
     create: yes
+  with_items:
+    - "{{ rundeck_config }}"
 
 - name: configure rundeck framework
   lineinfile:
