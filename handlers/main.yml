@@ -3,11 +3,17 @@
 - name: wait until unpacked
   wait_for:
     path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+  notify: stop rundeck
 
 - name: start rundeck
   service:
     name: rundeck
     state: started
+
+- name: stop rundeck
+  service:
+    name: rundeck
+    state: stopped
 
 - name: restart rundeck
   service:

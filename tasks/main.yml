@@ -14,12 +14,12 @@
     url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
     dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
 
-- name: unpack rundeck
-  command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar --installonly
-  args:
-    creates: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-  notify:
-    - wait until unpacked
+# - name: unpack rundeck
+#   command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar --installonly
+#   args:
+#     creates: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+#   notify:
+#     - wait until unpacked
 
 - name: register rundeck to a sysvinit system
   template:
@@ -37,6 +37,13 @@
     - ansible_service_mgr == "systemd"
   notify:
     - systemd daemon reload
+
+- name: unpack rundeck
+  service:
+    name: rundeck
+    state: started
+  notify:
+    - wait until unpacked
 
 # - name: configure rundeck profile
 #   template:
