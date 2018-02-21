@@ -13,8 +13,13 @@
   get_url:
     url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
     dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
+
+- name: unpack rundeck
+  command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar --installonly
+  args:
+    creates: "{{ rundeck_rdeckbase }}/etc/framework.properties"
   notify:
-    - unpack rundeck
+    - wait until unpacked
 
 - name: register rundeck to a sysvinit system
   template:
@@ -33,10 +38,10 @@
   notify:
     - systemd daemon reload
 
-- name: configure rundeck profile
-  template:
-    src: templates/profile.j2
-    dest: "{{ rundeck_rdeckbase }}/etc/profile"
+# - name: configure rundeck profile
+#   template:
+#     src: templates/profile.j2
+#     dest: "{{ rundeck_rdeckbase }}/etc/profile"
 
 - name: flush_handlers
   meta: flush_handlers

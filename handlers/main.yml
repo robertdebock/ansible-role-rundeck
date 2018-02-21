@@ -1,12 +1,13 @@
 ---
 # handlers file for rundeck
+- name: wait until unpacked
+  wait_for:
+    path: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+
 - name: start rundeck
   service:
     name: rundeck
     state: started
-
-- name: unpack rundeck
-  command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar --installonly
 
 - name: restart rundeck
   service:
