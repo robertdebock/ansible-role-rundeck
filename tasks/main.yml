@@ -42,7 +42,7 @@
   command: java -jar rundeck-launcher-2.10.6.jar
   args:
     chdir: "{{ rundeck_rdeckbase }}"
-    creates: "{{ rundeck_rdeckbase }}/server"
+    creates: "{{ rundeck_rdeckbase }}/server/"
   async: 1
   poll: 0
   notify:
