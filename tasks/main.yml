@@ -52,9 +52,10 @@
 - name: configure rundeck properties
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
-    line: "{{ item.parameter }}={{ item.value }}"
+    line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
     create: yes
+  notify: restart rundeck
   with_items:
     - "{{ rundeck_config }}"
 
