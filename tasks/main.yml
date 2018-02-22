@@ -13,6 +13,9 @@
   get_url:
     url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
     dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
+  notify:
+    - unpack rundeck
+    - wait until unpacked
 
 - name: register rundeck to a sysvinit system
   template:
@@ -30,16 +33,6 @@
     - ansible_service_mgr == "systemd"
   notify:
     - systemd daemon reload
-
-- name: unpack rundeck
-  command: java -jar rundeck-launcher-2.10.6.jar
-  args:
-    chdir: "{{ rundeck_rdeckbase }}"
-    creates: "{{ rundeck_rdeckbase }}/server/"
-  async: 1
-  poll: 0
-  notify:
-    - wait until unpacked
 
 - name: flush_handlers
   meta: flush_handlers
