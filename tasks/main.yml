@@ -62,6 +62,12 @@
   with_items:
     - "{{ rundeck_framework }}"
 
+- name: configure rundeck policy
+  template:
+    src: templates/admin.aclpolicy.j2
+    dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
+  notify: restart rundeck
+
 - name: start rundeck
   service:
     name: rundeck
