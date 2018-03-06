@@ -10,6 +10,7 @@ Requirements
 
 Access to a repository containing packages, likely on the internet.
 A total memory (RAM) size exceeding the setting `rundeck_xmx`.
+Have java available. Hint: robertdebock.java
 
 Role Variables
 --------------
@@ -25,6 +26,9 @@ See defaults/main for more details:
 Dependencies
 ------------
 
+You can include these roles to meet all requirements for this role.
+
+- robertdebock.bootstrap
 - robertdebock.java
 
 Download the dependencies by issuing this command:
@@ -41,7 +45,8 @@ Example Playbook
 - hosts: servers
 
   roles:
-    - robertdebock.java
+    - role: robertdebock.bootstrap
+    - role: robertdebock.java
       java_version: 8
     - robertdebock.rundeck
 
