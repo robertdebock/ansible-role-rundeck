@@ -10,6 +10,7 @@
 - name: wait until unpacked
   wait_for:
     path: "{{ rundeck_rdeckbase }}/server"
+    timeout: 450
   notify:
     - stop rundeck
 
