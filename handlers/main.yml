@@ -11,9 +11,7 @@
   wait_for:
     path: "{{ rundeck_rdeckbase }}/server"
     timeout: 120
-  register: result
-  retries: 3
-  until: result.rc == 0
+  failed_when: no
   notify:
     - stop rundeck
 
