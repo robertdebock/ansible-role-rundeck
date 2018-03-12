@@ -12,25 +12,32 @@ lint:
 platforms:
   - name: rundeck-centos-6
     box: centos/6
-    memory: 1024
+    options:
+      memory: 1024
   - name: rundeck-centos-7
     box: centos/7
-    memory: 1024
+    options:
+      memory: 1024
   - name: rundeck-debian-buster64
     box: desc/buster64
-    memory: 1024
+    options:
+      memory: 1024
   - name: rundeck-fedora-26-cloud-base
     box: fedora/26-cloud-base
-    memory: 1024
+    options:
+      memory: 1024
   - name: rundeck-fedora-27-cloud-base
     box: fedora/27-cloud-base
-    memory: 1024
+    options:
+      memory: 1024
   - name: rundeck-opensuse-openSUSE-42-2-x86-64
     box: opensuse/openSUSE-42.2-x86_64
-    memory: 1024
+    options:
+      memory: 1024
   - name: rundeck-ubuntu-artful
     box: ubuntu/artful64
-    memory: 1024
+    options:
+      memory: 1024
 provisioner:
   name: ansible
   lint:
