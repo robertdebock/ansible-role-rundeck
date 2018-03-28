@@ -8,10 +8,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  # 16.04 LTS
-  - name: rundeck-ubuntu-xenial
-    image: ubuntu:xenial
-  # 17.04
   - name: rundeck-ubuntu-artful
     image: ubuntu:artful
 provisioner:
@@ -19,7 +15,7 @@ provisioner:
   lint:
     name: ansible-lint
 scenario:
-  name: ubuntu
+  name: ubuntu-artful
   test_sequence:
     - lint
     - destroy

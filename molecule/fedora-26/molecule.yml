@@ -8,16 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-centos-6
-    image: centos:6
-  - name: rundeck-centos-7
-    image: centos:7
+  - name: rundeck-fedora-26
+    image: fedora:26
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: centos
+  name: fedora-26
   test_sequence:
     - lint
     - destroy

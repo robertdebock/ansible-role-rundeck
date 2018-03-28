@@ -8,16 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-debian-stretch
-    image: debian:stretch
-  - name: rundeck-debian-buster
-    image: debian:buster
+  - name: rundeck-ubuntu-xenial
+    image: ubuntu:xenial
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: debian
+  name: ubuntu-xenial
   test_sequence:
     - lint
     - destroy
