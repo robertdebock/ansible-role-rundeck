@@ -6,7 +6,7 @@ Rundeck
 Provides Rundeck for your system.
 
 Context
---------
+-------
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
@@ -44,6 +44,24 @@ ansible-galaxy install --role-file requirements.yml
 ```
 
 These dependencies are not listed in meta/main.yml, because this would run the role with default values, which may lead the installation of a java version or type that does not match your desired situation.
+
+Compatibility
+-------------
+
+This role has been tested against the following distributions and Ansible version:
+
+|distribution|ansible 2.3|ansible 2.4|ansible 2.5|
+|------------|-----------|-----------|-----------|
+|centos-6|yes|yes|yes|
+|centos-7|yes|yes|yes|
+|debian-buster|yes|yes|yes|
+|debian-stretch|yes|yes|yes|
+|fedora-26|yes|yes|yes|
+|fedora-27|yes|yes|yes|
+|opensuse-42.2|yes|yes|yes|
+|opensuse-42.3|yes|yes|yes|
+|ubuntu-artful|yes|yes|yes|
+|ubuntu-xenial|yes|yes|yes|
 
 Example Playbook
 ----------------
