@@ -13,6 +13,9 @@
   get_url:
     url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
     dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
+  register: downloadrundeck
+  until: downloadrundeck is succeedes
+  retries: 3
   notify:
     - unpack rundeck
     - wait until unpacked
