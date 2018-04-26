@@ -54,6 +54,8 @@
   notify: restart rundeck
   with_items:
     - "{{ rundeck_config }}"
+  loop_control:
+    label: "{{ item.parameter }}"
 
 - name: configure rundeck framework
   lineinfile:
@@ -64,6 +66,8 @@
   notify: restart rundeck
   with_items:
     - "{{ rundeck_framework }}"
+  loop_control:
+    label: "{{ item.parameter }}"
 
 - name: configure rundeck policy
   template:
