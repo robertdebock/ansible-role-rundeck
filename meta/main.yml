@@ -32,8 +32,8 @@ galaxy_info:
         - all
     - name: Ubuntu
       versions:
-        - xenial
         - artful
+        - bionic
 
   galaxy_tags:
     - Rundeck
