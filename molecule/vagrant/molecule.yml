@@ -22,12 +22,12 @@ platforms:
     box: desc/buster64
     options:
       memory: 1024
-  - name: rundeck-fedora-26-cloud-base
-    box: fedora/26-cloud-base
-    options:
-      memory: 1024
   - name: rundeck-fedora-27-cloud-base
     box: fedora/27-cloud-base
+    options:
+      memory: 1024
+  - name: rundeck-fedora-28-cloud-base
+    box: fedora/28-cloud-base
     options:
       memory: 1024
   - name: rundeck-opensuse-openSUSE-42-2-x86-64
