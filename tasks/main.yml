@@ -22,7 +22,7 @@
 
 - name: register rundeck to a sysvinit system
   template:
-    src: templates/rundeck.j2
+    src: rundeck.j2
     dest: "/etc/init.d/rundeck"
     mode: 0750
   when:
@@ -30,7 +30,7 @@
 
 - name: register rundeck to a systemd system
   template:
-    src: templates/rundeck.service.j2
+    src: rundeck.service.j2
     dest: /etc/systemd/system/rundeck.service
   when:
     - ansible_service_mgr == "systemd"
@@ -42,7 +42,7 @@
 
 - name: configure rundeck profile
   template:
-    src: templates/profile.j2
+    src: profile.j2
     dest: "{{ rundeck_rdeckbase }}/etc/profile"
 
 - name: configure rundeck properties
@@ -71,7 +71,7 @@
 
 - name: configure rundeck policy
   template:
-    src: templates/admin.aclpolicy.j2
+    src: admin.aclpolicy.j2
     dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
   notify: restart rundeck
 
