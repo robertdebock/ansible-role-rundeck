@@ -76,8 +76,7 @@ Example Playbook
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.java
-      java_version: 8
-    - robertdebock.rundeck
+    - role: robertdebock.rundeck
 
 ```
 
