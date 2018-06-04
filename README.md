@@ -35,8 +35,8 @@ Dependencies
 
 You can include these roles to meet all requirements for this role.
 
-- robertdebock.bootstrap
-- robertdebock.java
+- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
+- [robertdebock.java](https://travis-ci.org/robertdebock/ansible-role-java)
 
 Download the dependencies by issuing this command:
 ```
