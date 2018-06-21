@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-ubuntu-bionic
-    image: ubuntu:bionic
+  - name: rundeck-debian-latest
+    image: debian:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: ubuntu-bionic
+  name: debian-latest
 verifier:
   name: goss
   lint:

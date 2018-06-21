@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-debian-buster
-    image: debian:buster
+  - name: rundeck-alpine-edge
+    image: alpine:edge
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: debian-buster
+  name: alpine-edge
 verifier:
   name: goss
   lint:

@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-alpine-3.6
-    image: alpine:3.6
+  - name: rundeck-opensuse-leap
+    image: opensuse:leap
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: alpine-3.6
+  name: opensuse-leap
 verifier:
   name: goss
   lint:

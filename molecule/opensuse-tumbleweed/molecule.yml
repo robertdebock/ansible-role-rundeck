@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-debian-stretch
-    image: debian:stretch
+  - name: rundeck-opensuse-tumbleweed
+    image: opensuse:tumbleweed
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: debian-stretch
+  name: opensuse-tumbleweed
 verifier:
   name: goss
   lint:

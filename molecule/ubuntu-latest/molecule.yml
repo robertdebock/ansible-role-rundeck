@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: rundeck-opensuse-42.2
-    image: opensuse:42.2
+  - name: rundeck-ubuntu-latest
+    image: ubuntu:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: opensuse-42.2
+  name: ubuntu-latest
 verifier:
   name: goss
   lint:
