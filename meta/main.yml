@@ -37,11 +37,11 @@ galaxy_info:
         - bionic
 
   galaxy_tags:
-    - Rundeck
-    - Alpine
-    - CentOS
-    - Debian
-    - Fedora
-    - Ubuntu
+    - rundeck
+    - alpine
+    - centos
+    - debian
+    - fedora
+    - ubuntu
 
 dependencies: []
