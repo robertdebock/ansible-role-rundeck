@@ -24,11 +24,15 @@ Role Variables
 
 See defaults/main for more details:
 
-- rundeck_url
-- rundeck_xmx
-- rundeck_xms
-- rundeck_maxmetaspacesize
-- rundeck_rdeckbase
+
+- rundeck_rdeckbase: The directory where to install Rundeck.
+- rundeck_xmx: Memory in megabytes for xmx.
+- rundeck_xms: Memory in megabytes for xms.
+- rundeck_maxmetaspacesize: Memory in megabytes for maxmetaspace
+- rundeck_url: The url Rundeck can be found on.
+- rundeck_server_web_context: The contact (part after the domain).
+- rundeck_config: Settings for Rundeck.
+- rundeck_framework: Settings for Rundeck framework.
 
 Dependencies
 ------------
@@ -50,22 +54,21 @@ Compatibility
 
 This role has been tested against the following distributions and Ansible version:
 
-|distribution|ansible 2.3|ansible 2.4|ansible 2.5|
+|distribution|ansible 2.4|ansible 2.5|ansible 2.6|
 |------------|-----------|-----------|-----------|
-|alpine-latest|yes|yes|yes|
 |alpine-edge|yes|yes|yes|
+|alpine-latest|yes|yes|yes|
 |archlinux|yes|yes|yes|
 |centos-6|yes|yes|yes|
 |centos-latest|yes|yes|yes|
-|debian-stable|yes|yes|yes|
 |debian-latest|yes|yes|yes|
-|debian-wheezy|yes|yes|yes|
+|debian-stable|yes|yes|yes|
 |fedora-latest|yes|yes|yes|
 |fedora-rawhide|yes|yes|yes|
 |opensuse-leap|yes|yes|yes|
 |opensuse-tumbleweed|yes|yes|yes|
 |ubuntu-artful|yes|yes|yes|
-|ubunut-bionic|yes|yes|yes|
+|ubuntu-latest|yes|yes|yes|
 
 Example Playbook
 ----------------
