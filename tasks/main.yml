@@ -79,6 +79,6 @@
   service:
     name: rundeck
     state: started
-    enabled: true
+    enabled: yes
   when:
     - ansible_virtualization_type != "docker"
