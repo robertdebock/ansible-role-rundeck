@@ -1,5 +1,5 @@
 ---
 # vars file for rundeck
 rundeck_version: 3.0.7
-rundeck_download_url: "http://dl.bintray.com/rundeck/rundeck-maven/"
+rundeck_download_url: "http://github.com/rundeck/rundeck/tarball/v{{ rundeck_version }}"
 rundeck_jar: rundeck-launcher-{{ rundeck_version }}.jar
