@@ -1,9 +1,136 @@
-Rundeck
+rundeck
 =========
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-rundeck)
 
 Provides Rundeck for your system.
+
+
+Example Playbook
+----------------
+
+This example is taken from `molecule/default/playbook.yml`:
+```
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  become: true
+
+  roles:
+    - robertdebock.bootstrap
+    - robertdebock.java
+      java_version: 8
+    - robertdebock.rundeck
+
+```
+
+Role Variables
+--------------
+
+These variables are set in `defaults/main.yml`:
+```
+---
+# defaults file for rundeck
+
+# Where to install rundeck.
+rundeck_rdeckbase: /opt/rundeck
+
+# The Xmx memory size in mb. (Stored in: "{{ rundeck_rdeckbase }}/etc/profile".)
+rundeck_xmx: 1024
+rundeck_xms: 256
+rundeck_maxmetaspacesize: 128
+
+# The URL where Rundeck will be served on:
+rundeck_url: "http://{{ ansible_fqdn }}:4440/"
+rundeck_server_web_context: /
+
+rundeck_config:
+  - parameter: grails.serverURL
+    value: "{{ rundeck_url }}"
+
+# The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
+rundeck_framework:
+  - parameter: framework.server.hostname
+    value: "{{ ansible_fqdn }}"
+  - parameter: framework.server.name
+    value: "{{ ansible_fqdn }}"
+  - parameter: framework.projects.dir
+    value: "{{ rundeck_rdeckbase }}/projects"
+  - parameter: framework.var.dir
+    value: "{{ rundeck_rdeckbase }}/var"
+  - parameter: framework.logs.dir
+    value: "{{ rundeck_rdeckbase }}/var/logs"
+  # - parameter: "framework.server.username"
+  #   value: unset
+  # - parameter: "framework.server.password"
+  #   value: unset
+  - parameter: framework.rundeck.url
+    value: "{{ rundeck_url }}"
+  # - parameter: "framework.ssh.keypath"
+  #   value: unset
+  # - parameter: "framework.ssh.user"
+  #   value: unset
+  - parameter: framework.ssh-connect-timeout
+    value: 0
+  - parameter: framework.ssh-command-timeout
+    value: 0
+  # - parameter: "framework.log.dispatch.console.format"
+  #   value: unset
+  - parameter: framework.rundeck.execution.script.tokenexpansion.enabled
+    value: true
+
+```
+
+Requirements
+------------
+
+- Access to a repository containing packages, likely on the internet.
+- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+
+The following roles can be installed to ensure all requirements are met, using `ansible-galaxy install -r requirements.yml`:
+
+---
+- robertdebock.bootstrap
+- robertdebock.java
+
+
+Context
+-------
+
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
+
+Here is an overview of related roles:
+![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/rundeck.png "Dependency")
+
+
+Compatibility
+-------------
+
+This role has been tested against the following distributions and Ansible version:
+
+|distribution|ansible 2.4|ansible 2.5|ansible 2.6|ansible 2.7|ansible devel|
+|------------|-----------|-----------|-----------|-----------|-------------|
+|alpine-edge*|yes|yes|yes|yes|yes*|
+|alpine-latest|yes|yes|yes|yes|yes*|
+|archlinux|yes|yes|yes|yes|yes*|
+|centos-6|yes|yes|yes|yes|yes*|
+|centos-latest|yes|yes|yes|yes|yes*|
+|debian-latest|yes|yes|yes|yes|yes*|
+|debian-stable|yes|yes|yes|yes|yes*|
+|debian-unstable*|yes|yes|yes|yes|yes*|
+|fedora-latest|yes|yes|yes|yes|yes*|
+|fedora-rawhide*|yes|yes|yes|yes|yes*|
+|opensuse-leap|yes|yes|yes|yes|yes*|
+|opensuse-tumbleweed|yes|yes|yes|yes|yes*|
+|ubuntu-artful|yes|yes|yes|yes|yes*|
+|ubuntu-devel*|yes|yes|yes|yes|yes*|
+|ubuntu-latest|yes|yes|yes|yes|yes*|
+
+A single star means the build may fail, it's marked as an experimental build.
+
+Testing
+-------
 
 [Unit tests](https://travis-ci.org/robertdebock/ansible-role-rundeck) are done on every commit and periodically.
 
@@ -14,92 +141,14 @@ To test this role locally please use [Molecule](https://github.com/metacloud/mol
 pip install molecule
 molecule test
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
+There are many specific scenarios available, please have a look in the `molecule/` directory.
 
-Context
--------
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
-
-Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/rundeck.png "Dependency")
-
-Requirements
-------------
-
-Access to a repository containing packages, likely on the internet.
-A total memory (RAM) size exceeding the setting `rundeck_xmx`.
-Have java available. Hint: robertdebock.java
-
-Role Variables
---------------
-
-See defaults/main for more details:
-
-
-- rundeck_rdeckbase: The directory where to install Rundeck.
-- rundeck_xmx: Memory in megabytes for xmx.
-- rundeck_xms: Memory in megabytes for xms.
-- rundeck_maxmetaspacesize: Memory in megabytes for maxmetaspace
-- rundeck_url: The url Rundeck can be found on.
-- rundeck_server_web_context: The contact (part after the domain).
-- rundeck_config: Settings for Rundeck.
-- rundeck_framework: Settings for Rundeck framework.
-
-Dependencies
-------------
-
-You can include these roles to meet all requirements for this role.
-
-- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
-- [robertdebock.java](https://travis-ci.org/robertdebock/ansible-role-java)
-
-Download the dependencies by issuing this command:
-```
-ansible-galaxy install --role-file requirements.yml
-```
-
-These dependencies are not listed in meta/main.yml, because this would run the role with default values, which may lead the installation of a java version or type that does not match your desired situation.
-
-Compatibility
--------------
-
-This role has been tested against the following distributions and Ansible version:
-
-|distribution|ansible 2.4|ansible 2.5|ansible 2.6|
-|------------|-----------|-----------|-----------|
-|alpine-edge|yes|yes|yes|
-|alpine-latest|yes|yes|yes|
-|archlinux|yes|yes|yes|
-|centos-6|yes|yes|yes|
-|centos-latest|yes|yes|yes|
-|debian-latest|yes|yes|yes|
-|debian-stable|yes|yes|yes|
-|fedora-latest|yes|yes|yes|
-|fedora-rawhide|yes|yes|yes|
-|opensuse-leap|yes|yes|yes|
-|opensuse-tumbleweed|yes|yes|yes|
-|ubuntu-artful|yes|yes|yes|
-|ubuntu-latest|yes|yes|yes|
-
-Example Playbook
-----------------
-
-```
-- hosts: servers
-
-  roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.java
-    - role: robertdebock.rundeck
-
-```
-
-Install this role using `galaxy install robertdebock.rundeck`.
 
 License
 -------
 
-Apache License, Version 2.0
+Apache-2.0
+
 
 Author Information
 ------------------

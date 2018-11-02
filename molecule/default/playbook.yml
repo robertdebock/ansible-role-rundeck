@@ -5,8 +5,6 @@
   become: true
 
   roles:
-    - role: ansible-role-bootstrap
-
-  tasks:
-    - name: test connection
-      ping:
+    - robertdebock.bootstrap
+    - robertdebock.java
+    - ansible-role-rundeck

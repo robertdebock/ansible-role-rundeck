@@ -5,7 +5,6 @@
   become: true
 
   roles:
-    - role: robertdebock.bootstrap
-    - role: robertdebock.java
-      java_version: 8
-    - role: ansible-role-rundeck
+    - robertdebock.bootstrap
+    - robertdebock.java
+    - ansible-role-rundeck
