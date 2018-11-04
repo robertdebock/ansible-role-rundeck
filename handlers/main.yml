@@ -1,7 +1,7 @@
 ---
 # handlers file for rundeck
 - name: unpack rundeck
-  command: java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar
+  command: "java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar"
   args:
     chdir: "{{ rundeck_rdeckbase }}"
   async: 60
