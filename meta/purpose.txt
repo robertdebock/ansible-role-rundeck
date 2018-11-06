@@ -1,1 +1,0 @@
-Provides Rundeck for your system.

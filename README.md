@@ -3,8 +3,7 @@ rundeck
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-rundeck)
 
-Provides Rundeck for your system.
-
+The purpose of this role is to install and configure rundeck on your system.
 
 Example Playbook
 ----------------
@@ -20,7 +19,6 @@ This example is taken from `molecule/default/playbook.yml`:
   roles:
     - robertdebock.bootstrap
     - robertdebock.java
-      java_version: 8
     - robertdebock.rundeck
 
 ```
