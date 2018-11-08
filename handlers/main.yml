@@ -1,33 +1,9 @@
 ---
 # handlers file for rundeck
 - name: unpack rundeck
-  command: "java -jar {{ rundeck_rdeckbase }}/rundeck-launcher-{{ rundeck_version }}.jar"
+  command: "java -jar {{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
   args:
     chdir: "{{ rundeck_rdeckbase }}"
-  async: 60
-  poll: 0
-
-- name: wait until unpacked
-  wait_for:
-    path: "{{ rundeck_rdeckbase }}/server"
-    timeout: 120
-  failed_when: no
-  notify:
-    - stop rundeck
-
-- name: start rundeck
-  service:
-    name: rundeck
-    state: started
-  when:
-    - ansible_virtualization_type != "docker"
-
-- name: stop rundeck
-  service:
-    name: rundeck
-    state: stopped
-  when:
-    - ansible_virtualization_type != "docker"
 
 - name: systemd daemon reload
   systemd:

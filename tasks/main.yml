@@ -7,18 +7,21 @@
   with_items:
     - "{{ rundeck_rdeckbase }}"
     - "{{ rundeck_rdeckbase }}/etc"
-    - "{{ rundeck_rdeckbase }}/var"
+    - "{{ rundeck_rdeckbase }}"
 
 - name: download rundeck
   get_url:
-    url: "{{ rundeck_download_url }}/{{ rundeck_jar }}"
-    dest: "{{ rundeck_rdeckbase }}/{{ rundeck_jar }}"
+    url: "{{ rundeck_download_url }}"
+    dest: "{{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
   register: downloadrundeck
   until: downloadrundeck is succeeded
   retries: 3
-  notify:
-    - unpack rundeck
-    - wait until unpacked
+
+- name: unpack rundeck
+  command: "java -jar {{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war --installonly"
+  args:
+    chdir: "{{ rundeck_rdeckbase }}"
+    creates: "{{ rundeck_rdeckbase }}/server"
 
 - name: register rundeck to a sysvinit system
   template:
@@ -51,7 +54,8 @@
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
     create: yes
-  notify: restart rundeck
+  notify:
+    - restart rundeck
   with_items:
     - "{{ rundeck_config }}"
   loop_control:
@@ -63,7 +67,8 @@
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
     create: yes
-  notify: restart rundeck
+  notify:
+    - restart rundeck
   with_items:
     - "{{ rundeck_framework }}"
   loop_control:
@@ -73,7 +78,8 @@
   template:
     src: admin.aclpolicy.j2
     dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
-  notify: restart rundeck
+  notify:
+    - restart rundeck
 
 - name: start rundeck
   service:

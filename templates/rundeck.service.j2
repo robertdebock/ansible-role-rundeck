@@ -6,7 +6,6 @@ After=syslog.target network.target
 [Service]
 Type=forking
 Environment=RDECK_BASE={{ rundeck_rdeckbase }}
-Environment=RDECK_LAUNCHER={{ rundeck_rdeckbase }}/{{ rundeck_jar }}
 
 ExecStart={{ rundeck_rdeckbase }}/server/sbin/rundeckd start
 ExecStop={{ rundeck_rdeckbase }}/server/sbin/rundeckd stop
