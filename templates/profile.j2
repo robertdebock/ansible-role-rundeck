@@ -2,7 +2,7 @@
 RDECK_BASE=/opt/rundeck
 export RDECK_BASE
 
-JAVA_HOME=/usr/lib/jvm/jre
+JAVA_HOME={{ rundeck_java_home }}
 export JAVA_HOME
 
 PATH=$JAVA_HOME/bin:$RDECK_BASE/tools/bin:$PATH

@@ -47,6 +47,8 @@
   template:
     src: profile.j2
     dest: "{{ rundeck_rdeckbase }}/etc/profile"
+  notify:
+    - restart rundeck
 
 - name: configure rundeck properties
   lineinfile:
