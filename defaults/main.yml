@@ -10,8 +10,11 @@ rundeck_xms: 256
 rundeck_maxmetaspacesize: 128
 
 # The URL where Rundeck will be served on:
-rundeck_url: "http://{{ ansible_fqdn }}:4440/"
+rundeck_port: 4440
+rundeck_address: "{{ ansible_default_ipv4.address }}"
 rundeck_server_web_context: /
+
+rundeck_url: "http://{{ rundeck_address }}:{{ rundeck_port }}{{ rundeck_server_web_context }}"
 
 rundeck_config:
   - parameter: grails.serverURL

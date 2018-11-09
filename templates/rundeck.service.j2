@@ -4,11 +4,13 @@ Description=rundeck
 After=syslog.target network.target
 
 [Service]
-Type=forking
-Environment=RDECK_BASE={{ rundeck_rdeckbase }}
+#Type=forking
+Type=simple
 
-ExecStart={{ rundeck_rdeckbase }}/server/sbin/rundeckd start
-ExecStop={{ rundeck_rdeckbase }}/server/sbin/rundeckd stop
+#ExecStart={{ rundeck_rdeckbase }}/server/sbin/rundeckd start
+ExecStart=/usr/bin/java -Xmx{{ rundeck_xmx }}m -Xms{{ rundeck_xms }}m -XX:MaxMetaspaceSize={{ rundeck_maxmetaspacesize }}m -server -Dserver.web.context={{ rundeck_server_web_context }} -Dserver.http.host={{ rundeck_address }} -Dserver.http.port={{ rundeck_port }} -jar {{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war
+
+#ExecStop={{ rundeck_rdeckbase }}/server/sbin/rundeckd stop
 
 [Install]
 WantedBy=multi-user.target

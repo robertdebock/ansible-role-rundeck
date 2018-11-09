@@ -1,10 +1,5 @@
 ---
 # handlers file for rundeck
-- name: unpack rundeck
-  command: "java -jar {{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
-  args:
-    chdir: "{{ rundeck_rdeckbase }}"
-
 - name: systemd daemon reload
   systemd:
     daemon_reload: yes

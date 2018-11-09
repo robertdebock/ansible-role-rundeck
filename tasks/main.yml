@@ -43,13 +43,6 @@
 - name: flush_handlers
   meta: flush_handlers
 
-- name: configure rundeck profile
-  template:
-    src: profile.j2
-    dest: "{{ rundeck_rdeckbase }}/etc/profile"
-  notify:
-    - restart rundeck
-
 - name: configure rundeck properties
   lineinfile:
     dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
