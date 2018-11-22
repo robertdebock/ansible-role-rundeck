@@ -11,4 +11,4 @@
     name: rundeck
     state: restarted
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or rundeck_ignore_docker

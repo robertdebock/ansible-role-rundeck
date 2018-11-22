@@ -50,3 +50,8 @@ rundeck_framework:
   #   value: unset
   - parameter: framework.rundeck.execution.script.tokenexpansion.enabled
     value: true
+
+# Some Docker containers do not allow managing services, rebooting and writing
+# to some locations in /etc. The role skips tasks that will typically fail in
+# Docker. With this parameter you can tell the role to -not- skip these tasks.
+rundeck_ignore_docker: yes
