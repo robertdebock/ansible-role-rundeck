@@ -18,7 +18,7 @@
   retries: 3
 
 - name: unpack rundeck
-  command: "java -jar {{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war --installonly"
+  command: "java -jar {{ rundeck_war }} --installonly"
   args:
     chdir: "{{ rundeck_rdeckbase }}"
     creates: "{{ rundeck_rdeckbase }}/server"
