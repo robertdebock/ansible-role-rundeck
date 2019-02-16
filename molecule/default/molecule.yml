@@ -34,8 +34,10 @@ platforms:
     image: opensuse:leap
   - name: rundeck-opensuse-tumbleweed
     image: opensuse:tumbleweed
-  - name: rundeck-ubuntu-artful
-    image: ubuntu:artful
+  - name: rundeck-ubuntu-latest
+    image: ubuntu:latest
+  - name: rundeck-ubuntu-rolling
+    image: ubuntu:rolling
   - name: rundeck-ubuntu-devel
     image: ubuntu:devel
   - name: rundeck-ubuntu-latest
