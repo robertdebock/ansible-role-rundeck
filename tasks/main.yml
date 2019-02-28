@@ -23,25 +23,9 @@
     chdir: "{{ rundeck_rdeckbase }}"
     creates: "{{ rundeck_rdeckbase }}/server"
 
-- name: register rundeck to a sysvinit system
-  template:
-    src: rundeck.j2
-    dest: "/etc/init.d/rundeck"
-    mode: 0750
-  when:
-    - ansible_service_mgr == "sysvinit" or ansible_service_mgr == "upstart"
-
-- name: register rundeck to a systemd system
-  template:
-    src: rundeck.service.j2
-    dest: /etc/systemd/system/rundeck.service
-  when:
-    - ansible_service_mgr == "systemd"
-  notify:
-    - systemd daemon reload
-
-- name: flush_handlers
-  meta: flush_handlers
+- name: create rundeck service
+  import_role:
+    name: robertdebock.service
 
 - name: configure rundeck properties
   lineinfile:
