@@ -13,14 +13,24 @@ This example is taken from `molecule/default/playbook.yml`:
 ---
 - name: Converge
   hosts: all
-  gather_facts: false
-  become: true
+  become: yes
+  gather_facts: yes
+
+  roles:
+    - robertdebock.rundeck
+```
+
+The machine you are running this on, may need to be prepared. Tests have been done on machines prepared by this playbook:
+```yaml
+---
+- name: Prepare
+  hosts: all
+  gather_facts: no
+  become: yes
 
   roles:
     - robertdebock.bootstrap
     - robertdebock.java
-    - robertdebock.rundeck
-
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -82,12 +92,6 @@ rundeck_framework:
   #   value: unset
   - parameter: framework.rundeck.execution.script.tokenexpansion.enabled
     value: true
-
-# Some Docker containers do not allow managing services, rebooting and writing
-# to some locations in /etc. The role skips tasks that will typically fail in
-# Docker. With this parameter you can tell the role to -not- skip these tasks.
-rundeck_ignore_docker: yes
-
 ```
 
 Requirements
