@@ -60,6 +60,13 @@
   notify:
     - restart rundeck
 
+- name: configure rundeck default users
+  template:
+    src: realm.properties.j2
+    dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
+  notify:
+    - restart rundeck
+
 - name: start rundeck
   service:
     name: rundeck
