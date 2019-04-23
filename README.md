@@ -92,6 +92,15 @@ rundeck_framework:
   #   value: unset
   - parameter: framework.rundeck.execution.script.tokenexpansion.enabled
     value: true
+
+# default users stored in {{ rundeck_rdeckbase }}/server/config/realm.properties
+rundeck_users:
+  - username: "admin"
+    password: "admin"
+    roles: "user,admin"
+  - username: "user"
+    password: "user"
+    roles: "user"
 ```
 
 Requirements
