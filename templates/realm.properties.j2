@@ -12,5 +12,5 @@
 # This sets the temporary user accounts for the Rundeck app
 #
 {% for user in rundeck_users %}
-{{ user.username }}:{{ user.password }},{{ user.roles }}
+{{ user.username }}: {{ user.password }},{{ user.roles }}
 {% endfor %}
