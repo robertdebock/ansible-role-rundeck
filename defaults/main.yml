@@ -25,7 +25,7 @@ rundeck_framework:
   - parameter: framework.server.hostname
     value: "{{ ansible_fqdn }}"
   - parameter: framework.server.name
-    value: "{{ ansible_fqdn }}"
+    value: "{{ ansible_hostname }}"
   - parameter: framework.projects.dir
     value: "{{ rundeck_rdeckbase }}/projects"
   - parameter: framework.var.dir

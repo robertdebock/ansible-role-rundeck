@@ -31,6 +31,7 @@ The machine you are running this on, may need to be prepared. Tests have been do
   roles:
     - robertdebock.bootstrap
     - robertdebock.java
+    - robertdebock.common
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -67,7 +68,7 @@ rundeck_framework:
   - parameter: framework.server.hostname
     value: "{{ ansible_fqdn }}"
   - parameter: framework.server.name
-    value: "{{ ansible_fqdn }}"
+    value: "{{ ansible_hostname }}"
   - parameter: framework.projects.dir
     value: "{{ rundeck_rdeckbase }}/projects"
   - parameter: framework.var.dir
@@ -116,6 +117,7 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.bootstrap
 - robertdebock.java
 - robertdebock.service
+- robertdebock.common
 
 ```
 

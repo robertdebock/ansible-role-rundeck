@@ -7,3 +7,4 @@
   roles:
     - robertdebock.bootstrap
     - robertdebock.java
+    - robertdebock.common
