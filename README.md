@@ -3,7 +3,7 @@ rundeck
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-rundeck)
 
-<img src="https://www.rundeck.com/hubfs/identity/favicons/Rundeck-favicon.png" alt="Project logo"/>
+<img src="https://www.rundeck.com/hubfs/identity/favicons/Rundeck-favicon.png" alt="Project logo" align="right"/>
 
 Install and configure rundeck on your system.
 
