@@ -1,9 +1,11 @@
+<img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/>
+
 rundeck
 =========
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-rundeck)
 
-<img src="https://www.rundeck.com/hubfs/identity/favicons/Rundeck-favicon.png" alt="Project logo" align="right"/>
+<img src="https://raw.githubusercontent.com/robertdebock/ansible-role-rundeck/master/meta/logo.png" alt="Project logo" align="right"/>
 
 Install and configure rundeck on your system.
 
