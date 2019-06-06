@@ -2,7 +2,8 @@ rundeck
 =========
 
 <img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="left"/><img src="https://raw.githubusercontent.com/robertdebock/ansible-role-rundeck/master/meta/logo.png" alt="Project logo" width="40" height="40" align="right"/>
-[![Build Status](https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-rundeck)
+<img src="https://raw.githubusercontent.com/robertdebock/ansible-role-rundeck/master/meta/logo.png" alt="Project logo" align="right"/>
+<a href="https://travis-ci.org/robertdebock/ansible-role-rundeck"><img src="https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master" alt="Build status" align="left"/></a>
 
 Install and configure rundeck on your system.
 
@@ -136,22 +137,22 @@ Compatibility
 
 This role has been tested against the following distributions and Ansible version:
 
-|distribution|ansible 2.6|ansible 2.7|ansible devel|
+|distribution|ansible 2.7|ansible 2.8|ansible devel|
 |------------|-----------|-----------|-------------|
-|alpine-edge*|no|yes|yes*|
-|alpine-latest|no|yes|yes*|
-|archlinux|no|yes|yes*|
-|centos-6|no|yes|yes*|
-|centos-latest|no|yes|yes*|
-|debian-latest|no|yes|yes*|
-|debian-stable|no|yes|yes*|
-|debian-unstable*|no|yes|yes*|
-|fedora-latest|no|yes|yes*|
-|fedora-rawhide*|no|yes|yes*|
-|opensuse-leap|no|yes|yes*|
-|ubuntu-devel*|no|yes|yes*|
-|ubuntu-latest|no|yes|yes*|
-|ubuntu-rolling|no|yes|yes*|
+|alpine-edge*|yes|yes|yes*|
+|alpine-latest|yes|yes|yes*|
+|archlinux|yes|yes|yes*|
+|centos-6|yes|yes|yes*|
+|centos-latest|yes|yes|yes*|
+|debian-latest|yes|yes|yes*|
+|debian-stable|yes|yes|yes*|
+|debian-unstable*|yes|yes|yes*|
+|fedora-latest|yes|yes|yes*|
+|fedora-rawhide*|yes|yes|yes*|
+|opensuse-leap|yes|yes|yes*|
+|ubuntu-devel*|yes|yes|yes*|
+|ubuntu-latest|yes|yes|yes*|
+|ubuntu-rolling|yes|yes|yes*|
 
 A single star means the build may fail, it's marked as an experimental build.
 
