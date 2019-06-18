@@ -67,6 +67,17 @@
   notify:
     - restart rundeck
 
+- name: install plugins
+  get_url:
+    url: "{{ item }}"
+    dest: /opt/rundeck/libext
+  register: rundeck_install_plugins
+  until: rundeck_install_plugins is succeeded
+  retries: 3
+  with_items:
+    - "{{ rundeck_plugins }}"
+  when: rundeck_plugins is defined
+
 - name: start rundeck
   service:
     name: rundeck
