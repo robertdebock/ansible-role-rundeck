@@ -157,6 +157,11 @@ This role has been tested against the following distributions and Ansible versio
 
 A single star means the build may fail, it's marked as an experimental build.
 
+Upstream version(s)
+-------------------
+
+This projects [lists a version](https://github.com/robertdebock/ansible-role-rundeck/blob/master/vars/main.yml) of [rundeck](https://rundeck.org/downloads.html).
+
 Testing
 -------
 
