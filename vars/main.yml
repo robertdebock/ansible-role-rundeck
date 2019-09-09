@@ -1,7 +1,7 @@
 ---
 # vars file for rundeck
-rundeck_version: 3.0.8
-rundeck_release_date: 20181029
+rundeck_version: 3.1.0
+rundeck_release_date: 20190731
 rundeck_download_url: "https://dl.bintray.com/rundeck/rundeck-maven/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
 rundeck_jar: rundeck-launcher-{{ rundeck_version }}.jar
 rundeck_war: "{{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
