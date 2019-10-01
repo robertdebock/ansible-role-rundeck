@@ -67,6 +67,11 @@
   notify:
     - restart rundeck
 
+- name: create /opt/rundeck/libext
+  file:
+    path: /opt/rundeck/libext
+    state: directory
+
 - name: install plugins
   get_url:
     url: "{{ item }}"
