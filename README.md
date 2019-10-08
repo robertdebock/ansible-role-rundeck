@@ -58,7 +58,7 @@ rundeck_maxmetaspacesize: 128
 
 # The URL where Rundeck will be served on:
 rundeck_port: 4440
-rundeck_address: "{{ ansible_default_ipv4.address }}"
+rundeck_address: "{{ ansible_all_ipv4_addresses | default('127.0.0.1') }}"
 rundeck_server_web_context: /
 
 rundeck_url: "http://{{ rundeck_address }}:{{ rundeck_port }}{{ rundeck_server_web_context }}"
