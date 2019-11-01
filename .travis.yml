@@ -13,6 +13,7 @@ env:
   matrix:
     - image="alpine"
     - image="alpine" tag="edge"
+    # - namespace="archlinux" image="base"
     - image="debian" tag="stable"
     - image="debian" tag="unstable"
     - image="debian"
