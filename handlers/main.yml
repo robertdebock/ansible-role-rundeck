@@ -10,5 +10,3 @@
   service:
     name: rundeck
     state: restarted
-  when:
-    - ansible_virtualization_type != "docker"
