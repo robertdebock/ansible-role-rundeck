@@ -141,8 +141,6 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tag|allow_failures|
 |---------|---|--------------|
-|alpine|latest|no|
-|alpine|edge|yes|
 |debian|unstable|yes|
 |debian|latest|no|
 |centos|7|no|
@@ -158,6 +156,14 @@ This role has been tested on these Ansible versions:
 - ansible>=2.9
 - git+https://github.com/ansible/ansible.git@devel
 
+Exceptions
+----------
+
+Some variarations of the build matrix do not work. These are the variations and reasons why the build won't work:
+
+| variation                 | reason                 |
+|---------------------------|------------------------|
+| alpine | Shutting down rundeck:  |
 
 Included version(s)
 -------------------
