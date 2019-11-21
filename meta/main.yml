@@ -32,7 +32,6 @@ galaxy_info:
   galaxy_tags:
     - rundeck
     - centos
-    - fedora
     - ubuntu
 
 dependencies: []
