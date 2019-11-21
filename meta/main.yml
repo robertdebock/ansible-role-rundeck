@@ -31,7 +31,6 @@ galaxy_info:
 
   galaxy_tags:
     - rundeck
-    - alpine
     - centos
     - debian
     - fedora
