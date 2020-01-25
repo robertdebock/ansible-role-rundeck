@@ -2,7 +2,7 @@ rundeck
 =========
 
 <img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/><img src="https://raw.githubusercontent.com/robertdebock/ansible-role-rundeck/master/meta/logo.png" alt="Project logo" width="40" height="40" align="left"/>
-<a href="https://travis-ci.org/robertdebock/ansible-role-rundeck"> <img src="https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master" alt="Build status"/></a> <img src="https://img.shields.io/ansible/role/d/22886"/> <img src="https://img.shields.io/ansible/quality/22886"/>
+<a href="https://travis-ci.org/robertdebock/ansible-role-rundeck"> <img src="https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master" alt="Build status"/></a> <img src="https://img.shields.io/ansible/role/d/"/> <img src="https://img.shields.io/ansible/quality/"/>
 
 <a href="https://github.com/robertdebock/ansible-role-rundeck/actions"><img src="https://github.com/robertdebock/ansible-role-rundeck/workflows/GitHub%20Action/badge.svg"/></a>
 
@@ -61,6 +61,7 @@ rundeck_port: 4440
 rundeck_address: "{{ ansible_all_ipv4_addresses | default('127.0.0.1') }}"
 rundeck_server_web_context: /
 
+# The `rundeck_url` is a combination of the above values.
 rundeck_url: "http://{{ rundeck_address }}:{{ rundeck_port }}{{ rundeck_server_web_context }}"
 
 rundeck_config:

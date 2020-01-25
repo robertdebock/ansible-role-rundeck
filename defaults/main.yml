@@ -14,6 +14,7 @@ rundeck_port: 4440
 rundeck_address: "{{ ansible_all_ipv4_addresses | default('127.0.0.1') }}"
 rundeck_server_web_context: /
 
+# The `rundeck_url` is a combination of the above values.
 rundeck_url: "http://{{ rundeck_address }}:{{ rundeck_port }}{{ rundeck_server_web_context }}"
 
 rundeck_config:
