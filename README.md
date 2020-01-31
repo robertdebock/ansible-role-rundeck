@@ -2,7 +2,7 @@ rundeck
 =========
 
 <img src="https://docs.ansible.com/ansible-tower/3.2.4/html_ja/installandreference/_static/images/logo_invert.png" width="10%" height="10%" alt="Ansible logo" align="right"/><img src="https://raw.githubusercontent.com/robertdebock/ansible-role-rundeck/master/meta/logo.png" alt="Project logo" width="40" height="40" align="left"/>
-<a href="https://travis-ci.org/robertdebock/ansible-role-rundeck"> <img src="https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master" alt="Build status"/></a> <img src="https://img.shields.io/ansible/role/d/"/> <img src="https://img.shields.io/ansible/quality/"/>
+<a href="https://travis-ci.org/robertdebock/ansible-role-rundeck"> <img src="https://travis-ci.org/robertdebock/ansible-role-rundeck.svg?branch=master" alt="Build status"/></a> <img src="https://img.shields.io/ansible/role/d/22886"/> <img src="https://img.shields.io/ansible/quality/22886"/>
 
 <a href="https://github.com/robertdebock/ansible-role-rundeck/actions"><img src="https://github.com/robertdebock/ansible-role-rundeck/workflows/GitHub%20Action/badge.svg"/></a>
 
@@ -37,6 +37,18 @@ The machine you are running this on, may need to be prepared, I use this playboo
     - robertdebock.common
 ```
 
+After running this role, this playbook runs to verify that everything works, this may be a good example how you can use this role.
+```yaml
+---
+- name: Verify
+  hosts: all
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: check if connection still works
+      ping:
+```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
 
