@@ -4,7 +4,7 @@
   file:
     path: "{{ item }}"
     state: directory
-  with_items:
+  loop:
     - "{{ rundeck_rdeckbase }}"
     - "{{ rundeck_rdeckbase }}/etc"
     - "{{ rundeck_rdeckbase }}"
@@ -35,8 +35,7 @@
     create: yes
   notify:
     - restart rundeck
-  with_items:
-    - "{{ rundeck_config }}"
+  loop: "{{ rundeck_config }}"
   loop_control:
     label: "{{ item.parameter }}"
 
@@ -48,8 +47,7 @@
     create: yes
   notify:
     - restart rundeck
-  with_items:
-    - "{{ rundeck_framework }}"
+  loop: "{{ rundeck_framework }}"
   loop_control:
     label: "{{ item.parameter }}"
 
@@ -79,8 +77,7 @@
   register: rundeck_install_plugins
   until: rundeck_install_plugins is succeeded
   retries: 3
-  with_items:
-    - "{{ rundeck_plugins }}"
+  loop: "{{ rundeck_plugins }}"
   when: rundeck_plugins is defined
 
 - name: start rundeck
