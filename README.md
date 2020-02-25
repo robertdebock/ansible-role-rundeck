@@ -69,7 +69,7 @@ rundeck_maxmetaspacesize: 128
 
 # The URL where Rundeck will be served on:
 rundeck_port: 4440
-rundeck_address: "{{ ansible_all_ipv4_addresses | default('127.0.0.1') }}"
+rundeck_address: "{{ ansible_all_ipv4_addresses[0] | default('127.0.0.1') }}"
 rundeck_server_web_context: /
 
 # The `rundeck_url` is a combination of the above values.
@@ -120,7 +120,7 @@ rundeck_users:
     roles: "user"
 
 rundeck_plugins:
-  - https://github.com/Batix/rundeck-ansible-plugin/releases/download/3.0.1/ansible-plugin-3.0.1.jar
+  - https://github.com/Batix/rundeck-ansible-plugin/releases/download/3.1.1/ansible-plugin-3.1.1.jar
 ```
 
 Requirements
