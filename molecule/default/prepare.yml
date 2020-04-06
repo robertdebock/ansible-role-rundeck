@@ -5,6 +5,6 @@
   become: yes
 
   roles:
-    - robertdebock.bootstrap
-    - robertdebock.java
-    - robertdebock.common
+    - role: robertdebock.bootstrap
+    - role: robertdebock.java
+    - role: robertdebock.common
