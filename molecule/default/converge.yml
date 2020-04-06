@@ -5,4 +5,4 @@
   gather_facts: yes
 
   roles:
-    - ansible-role-rundeck
+    - role: ansible-role-rundeck
