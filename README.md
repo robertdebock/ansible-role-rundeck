@@ -56,6 +56,10 @@ These variables are set in `defaults/main.yml`:
 ---
 # defaults file for rundeck
 
+# Rundeck version to install
+rundeck_version: 3.2.3
+rundeck_release_date: 20200221
+
 # Where to install rundeck.
 rundeck_rdeckbase: /opt/rundeck
 
@@ -73,6 +77,8 @@ rundeck_server_web_context: /
 rundeck_url: "http://{{ rundeck_address }}:{{ rundeck_port }}{{ rundeck_server_web_context }}"
 
 rundeck_config:
+  - parameter: server.address
+    value: "{{ rundeck_address }}"
   - parameter: grails.serverURL
     value: "{{ rundeck_url }}"
 
@@ -116,8 +122,9 @@ rundeck_users:
     password: "user"
     roles: "user"
 
-rundeck_plugins:
-  - https://github.com/Batix/rundeck-ansible-plugin/releases/download/3.1.1/ansible-plugin-3.1.1.jar
+# Rundeck plugins to install
+rundeck_plugins: []
+  # - https://github.com/Batix/rundeck-ansible-plugin/releases/download/3.1.1/ansible-plugin-3.1.1.jar
 ```
 
 ## Requirements

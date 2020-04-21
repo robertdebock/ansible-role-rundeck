@@ -4,7 +4,6 @@
 # Rundeck version to install
 rundeck_version: 3.2.3
 rundeck_release_date: 20200221
-rundeck_download_url: "https://dl.bintray.com/rundeck/rundeck-maven/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
 
 # Where to install rundeck.
 rundeck_rdeckbase: /opt/rundeck
