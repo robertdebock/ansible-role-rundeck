@@ -2,9 +2,9 @@
 
 Install and configure rundeck on your system.
 
-|Travis|GitHub|Quality|Downloads|
-|------|------|-------|---------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-rundeck)|[![github](https://github.com/robertdebock/ansible-role-rundeck/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-rundeck/actions)|[![quality](https://img.shields.io/ansible/quality/22886)](https://galaxy.ansible.com/robertdebock/rundeck)|[![downloads](https://img.shields.io/ansible/role/d/22886)](https://galaxy.ansible.com/robertdebock/rundeck)|
+|Travis|GitHub|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-rundeck.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-rundeck)|[![github](https://github.com/robertdebock/ansible-role-rundeck/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-rundeck/actions)|[![quality](https://img.shields.io/ansible/quality/22886)](https://galaxy.ansible.com/robertdebock/rundeck)|[![downloads](https://img.shields.io/ansible/role/d/22886)](https://galaxy.ansible.com/robertdebock/rundeck)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-rundeck.svg)](https://github.com/robertdebock/ansible-role-rundeck/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -137,9 +137,9 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.common
 - robertdebock.java
 - robertdebock.service
-- robertdebock.common
 
 ```
 
