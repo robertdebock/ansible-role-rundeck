@@ -111,7 +111,7 @@ rundeck_framework:
   # - parameter: "framework.log.dispatch.console.format"
   #   value: unset
   - parameter: framework.rundeck.execution.script.tokenexpansion.enabled
-    value: true
+    value: yes
 
 # default users stored in {{ rundeck_rdeckbase }}/server/config/realm.properties
 rundeck_users:
