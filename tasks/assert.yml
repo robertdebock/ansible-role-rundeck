@@ -82,7 +82,6 @@
       - item.value is defined
       - item.value | length > 0
   loop: "{{ rundeck_config }}"
-  
 
 - name: test if rundeck_framework is set correctly
   assert:
