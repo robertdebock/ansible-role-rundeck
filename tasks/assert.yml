@@ -81,6 +81,7 @@
       - item.parameter in ["server.address", "grails.serverURL"]
       - item.value is defined
       - item.value | length > 0
+    quiet: yes
   loop: "{{ rundeck_config }}"
 
 - name: test if rundeck_framework is set correctly
