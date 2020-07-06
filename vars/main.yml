@@ -1,5 +1,6 @@
 ---
 # vars file for rundeck
+
 rundeck_download_url: "https://dl.bintray.com/rundeck/rundeck-maven/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
 
 rundeck_jar: rundeck-launcher-{{ rundeck_version }}.jar
