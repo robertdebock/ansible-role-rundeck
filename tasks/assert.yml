@@ -83,6 +83,8 @@
       - item.value | length > 0
     quiet: yes
   loop: "{{ rundeck_config }}"
+  loop_control:
+    label: "{{ item.parameter }}"
 
 - name: test if rundeck_framework is set correctly
   assert:
