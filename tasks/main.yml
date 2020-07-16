@@ -16,9 +16,6 @@
   get_url:
     url: "{{ rundeck_download_url }}"
     dest: "{{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
-  register: rundeck_download_rundeck
-  until: rundeck_download_rundeck is succeeded
-  retries: 3
 
 - name: unpack rundeck
   command: "java -jar {{ rundeck_war }} --installonly"
@@ -77,9 +74,6 @@
   get_url:
     url: "{{ item }}"
     dest: /opt/rundeck/libext
-  register: rundeck_install_plugins
-  until: rundeck_install_plugins is succeeded
-  retries: 3
   loop: "{{ rundeck_plugins }}"
   when: rundeck_plugins is defined
 
