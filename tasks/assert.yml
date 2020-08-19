@@ -4,6 +4,7 @@
     that:
       - rundeck_version is defined
       - rundeck_version | length > 0
+    quiet: yes
 
 - name: test if rundeck_release_date is set correctly
   assert:
@@ -11,12 +12,14 @@
       - rundeck_release_date is defined
       - rundeck_release_date | int
       - rundeck_release_date | int > 0
+    quiet: yes
 
 - name: test if rundeck_rdeckbase is set correctly
   assert:
     that:
       - rundeck_rdeckbase is defined
       - rundeck_rdeckbase | length > 0
+    quiet: yes
 
 - name: test if rundeck_xmx is set correctly
   assert:
@@ -24,6 +27,7 @@
       - rundeck_xmx is defined
       - rundeck_xmx | int
       - rundeck_xmx | int > rundeck_xms | int
+    quiet: yes
 
 - name: test if rundeck_xms is set correctly
   assert:
@@ -31,6 +35,7 @@
       - rundeck_xms is defined
       - rundeck_xms | int
       - rundeck_xms | int < rundeck_xmx | int
+    quiet: yes
 
 - name: test if rundeck_maxmetaspacesize is set correctly
   assert:
@@ -39,6 +44,7 @@
       - rundeck_maxmetaspacesize | int
       - rundeck_maxmetaspacesize | int < rundeck_xms | int
       - rundeck_maxmetaspacesize | int < rundeck_xmx | int
+    quiet: yes
 
 - name: test if rundeck_port is set correctly
   assert:
@@ -47,24 +53,28 @@
       - rundeck_port | int
       - rundeck_port | int > 0
       - rundeck_port | int < 65536
+    quiet: yes
 
 - name: test if rundeck_address is set correctly
   assert:
     that:
       - rundeck_address is defined
       - rundeck_address | length > 0
+    quiet: yes
 
 - name: test if rundeck_server_web_context is set correctly
   assert:
     that:
       - rundeck_server_web_context is defined
       - rundeck_server_web_context | length > 0
+    quiet: yes
 
 - name: test if rundeck_url is set correctly
   assert:
     that:
       - rundeck_url is defined
       - rundeck_url | length > 0
+    quiet: yes
 
 - name: test if rundeck_config is set correctly
   assert:
@@ -72,6 +82,7 @@
       - rundeck_config is defined
       - rundeck_config | length > 0
       - rundeck_config is iterable
+    quiet: yes
 
 - name: test item in rundeck_config
   assert:
@@ -92,6 +103,7 @@
       - rundeck_framework is defined
       - rundeck_framework | length > 0
       - rundeck_framework is iterable
+    quiet: yes
 
 - name: test if rundeck_users is set correctly
   assert:
@@ -99,9 +111,11 @@
       - rundeck_users is defined
       - rundeck_users | length > 0
       - rundeck_users is iterable
+    quiet: yes
 
 - name: test if rundeck_plugins is set correctly
   assert:
     that:
       - rundeck_plugins is defined
       - rundeck_plugins is iterable
+    quiet: yes
