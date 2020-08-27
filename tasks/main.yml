@@ -7,6 +7,7 @@
   file:
     path: "{{ item }}"
     state: directory
+    mode: "0755"
   loop:
     - "{{ rundeck_rdeckbase }}"
     - "{{ rundeck_rdeckbase }}/etc"
@@ -33,6 +34,7 @@
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
     create: yes
+    mode: "0644"
   notify:
     - restart rundeck
   loop: "{{ rundeck_config }}"
@@ -45,6 +47,7 @@
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
     create: yes
+    mode: "0644"
   notify:
     - restart rundeck
   loop: "{{ rundeck_framework }}"
@@ -55,6 +58,7 @@
   template:
     src: admin.aclpolicy.j2
     dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
+    mode: "0644"
   notify:
     - restart rundeck
 
@@ -62,6 +66,7 @@
   template:
     src: realm.properties.j2
     dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
+    mode: "0644"
   notify:
     - restart rundeck
 
@@ -69,6 +74,7 @@
   file:
     path: /opt/rundeck/libext
     state: directory
+    mode: "0755"
 
 - name: install plugins
   get_url:
