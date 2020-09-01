@@ -124,7 +124,7 @@ rundeck_users:
 
 # Rundeck plugins to install
 rundeck_plugins: []
-  # - https://github.com/Batix/rundeck-ansible-plugin/releases/download/3.1.1/ansible-plugin-3.1.1.jar
+# - https://github.com/Batix/rundeck-ansible-plugin/releases/download/3.1.1/ansible-plugin-3.1.1.jar
 ```
 
 ## [Requirements](#requirements)
