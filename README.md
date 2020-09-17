@@ -34,13 +34,13 @@ The machine may need to be prepared using `molecule/resources/prepare.yml`:
     - role: robertdebock.common
 ```
 
-For verification `molecule/resources/verify.yml` run after the role has been applied.
+For verification `molecule/resources/verify.yml` runs after the role has been applied.
 ```yaml
 ---
 - name: Verify
   hosts: all
   become: yes
-  gather_facts: yes
+  gather_facts: no
 
   tasks:
     - name: check if connection still works
@@ -81,6 +81,17 @@ rundeck_config:
     value: "{{ rundeck_address }}"
   - parameter: grails.serverURL
     value: "{{ rundeck_url }}"
+  - parameter: dataSource.url
+    value: "jdbc:h2:file:/opt/rundeck/server/data/grailsdb;MVCC=true"
+#   To connect to MySQL, use these settings. (Database has to be prepared.)
+#   - parameter: dataSource.url
+#     value: "jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false"
+#   - parameter: dataSource.username
+#     value: rundeck
+#   - parameter: dataSource.password
+#     value: rundeck
+#   - parameter: dataSource.driverClassName
+#     value: com.mysql.jdbc.Driver
 
 # The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
 rundeck_framework:
