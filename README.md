@@ -43,8 +43,14 @@ For verification `molecule/resources/verify.yml` runs after the role has been ap
   gather_facts: no
 
   tasks:
-    - name: check if connection still works
-      ping:
+    - name: check if port 4440 is available
+      wait_for:
+        port: 4440
+
+    - name: connect to rundeck
+      uri:
+        url: "http://localhost:4440/user/login"
+        method: GET
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -71,7 +77,10 @@ rundeck_maxmetaspacesize: 128
 # The URL where Rundeck will be served on:
 rundeck_port: 4440
 rundeck_address: "{{ ansible_all_ipv4_addresses[0] | default('127.0.0.1') }}"
-rundeck_server_web_context: /
+
+# You can change the context to for example: "/rundeck". An empty value means
+# that no specific context is added.
+rundeck_server_web_context: ""
 
 # The `rundeck_url` is a combination of the above values.
 rundeck_url: "http://{{ rundeck_address }}:{{ rundeck_port }}{{ rundeck_server_web_context }}"
