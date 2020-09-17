@@ -89,7 +89,6 @@
     that:
       - item.parameter is defined
       - item.parameter | length > 0
-      - item.parameter in ["server.address", "grails.serverURL"]
       - item.value is defined
       - item.value | length > 0
     quiet: yes
