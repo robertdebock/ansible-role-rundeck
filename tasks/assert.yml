@@ -65,9 +65,10 @@
 - name: test if rundeck_server_web_context is set correctly
   assert:
     that:
-      - rundeck_server_web_context is defined
-      - rundeck_server_web_context | length > 0
+      - rundeck_server_web_context | length >= 0
     quiet: yes
+  when:
+    - rundeck_server_web_context is defined
 
 - name: test if rundeck_url is set correctly
   assert:
