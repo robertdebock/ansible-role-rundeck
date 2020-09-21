@@ -40,7 +40,10 @@ For verification `molecule/resources/verify.yml` runs after the role has been ap
 - name: Verify
   hosts: all
   become: yes
-  gather_facts: yes
+  gather_facts: no
+
+  roles:
+    - robertdebock.core_dependencies
 
   tasks:
     - name: check if port 4440 is available
@@ -159,6 +162,7 @@ The following roles can be installed to ensure all requirements are met, using `
 ---
 - robertdebock.bootstrap
 - robertdebock.common
+- robertdebock.core_dependencies
 - robertdebock.java
 - robertdebock.service
 

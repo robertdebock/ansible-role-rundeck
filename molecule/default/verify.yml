@@ -2,13 +2,16 @@
 - name: Verify
   hosts: all
   become: yes
-  gather_facts: yes
+  gather_facts: no
+
+  roles:
+    - robertdebock.core_dependencies
 
   tasks:
     - name: check if port 4440 is available
       wait_for:
         port: 4440
-        host: "{{ ansible_default_ipv4.address | default('localhost') }}"
+        host: "{{ ansible_default_ipv4.address }}"
 
     - name: connect to rundeck
       uri:
