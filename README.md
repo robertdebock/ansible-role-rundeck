@@ -46,15 +46,30 @@ For verification `molecule/resources/verify.yml` runs after the role has been ap
     - robertdebock.core_dependencies
 
   tasks:
-    - name: check if port 4440 is available
-      wait_for:
-        port: 4440
-        host: "{{ ansible_default_ipv4.address }}"
+    - name: check port 4440
+      block:
+        - name: check port 4440 on {{ ansible_default_ipv4.address }}
+          wait_for:
+            port: 4440
+            timeout: 60
+            host: "{{ ansible_default_ipv4.address }}"
+      rescue:
+        - name: check port 4440 on localhost
+          wait_for:
+            timeout: 60
+            port: 4440
 
     - name: connect to rundeck
-      uri:
-        url: "http://{{ ansible_default_ipv4.address }}:4440/user/login"
-        method: GET
+      block:
+        - name: connect to http://{{ ansible_default_ipv4.address }}:4440
+          uri:
+            url: "http://{{ ansible_default_ipv4.address }}:4440/user/login"
+            method: GET
+      rescue:
+        - name: connect to http://locahost:4440
+          uri:
+            url: "http://localhost:4440/user/login"
+            method: GET
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
