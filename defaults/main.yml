@@ -9,7 +9,7 @@ rundeck_release_date: 20200910
 rundeck_rdeckbase: /opt/rundeck
 
 # The Xmx memory size in mb. (Stored in: "{{ rundeck_rdeckbase }}/etc/profile".)
-rundeck_xmx: 1024
+rundeck_xmx: 4096
 rundeck_xms: 256
 rundeck_maxmetaspacesize: 128
 
