@@ -46,19 +46,6 @@ For verification `molecule/resources/verify.yml` runs after the role has been ap
     - robertdebock.core_dependencies
 
   tasks:
-    - name: check port 4440
-      block:
-        - name: check port 4440 on {{ ansible_default_ipv4.address }}
-          wait_for:
-            port: 4440
-            timeout: 60
-            host: "{{ ansible_default_ipv4.address }}"
-      rescue:
-        - name: check port 4440 on localhost
-          wait_for:
-            timeout: 60
-            port: 4440
-
     - name: connect to rundeck
       block:
         - name: connect to http://{{ ansible_default_ipv4.address }}:4440
@@ -89,7 +76,7 @@ rundeck_release_date: 20200910
 rundeck_rdeckbase: /opt/rundeck
 
 # The Xmx memory size in mb. (Stored in: "{{ rundeck_rdeckbase }}/etc/profile".)
-rundeck_xmx: 1024
+rundeck_xmx: 4096
 rundeck_xms: 256
 rundeck_maxmetaspacesize: 128
 

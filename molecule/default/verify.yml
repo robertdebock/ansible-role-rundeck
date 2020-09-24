@@ -8,19 +8,6 @@
     - robertdebock.core_dependencies
 
   tasks:
-    - name: check port 4440
-      block:
-        - name: check port 4440 on {{ ansible_default_ipv4.address }}
-          wait_for:
-            port: 4440
-            timeout: 60
-            host: "{{ ansible_default_ipv4.address }}"
-      rescue:
-        - name: check port 4440 on localhost
-          wait_for:
-            timeout: 60
-            port: 4440
-
     - name: connect to rundeck
       block:
         - name: connect to http://{{ ansible_default_ipv4.address }}:4440
