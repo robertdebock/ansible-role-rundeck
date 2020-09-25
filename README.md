@@ -52,11 +52,17 @@ For verification `molecule/resources/verify.yml` runs after the role has been ap
           uri:
             url: "http://{{ ansible_default_ipv4.address }}:4440/user/login"
             method: GET
+          register: rundeck_connect
+          until: rundeck_connect is succeeded
+          retries: 3
       rescue:
         - name: connect to http://locahost:4440
           uri:
             url: "http://localhost:4440/user/login"
             method: GET
+          register: rundeck_connect
+          until: rundeck_connect is succeeded
+          retries: 3
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
