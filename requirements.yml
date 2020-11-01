@@ -1,6 +1,7 @@
 ---
-- robertdebock.bootstrap
-- robertdebock.common
-- robertdebock.core_dependencies
-- robertdebock.java
-- robertdebock.service
+roles:
+  - name: robertdebock.bootstrap
+  - name: robertdebock.common
+  - name: robertdebock.core_dependencies
+  - name: robertdebock.java
+  - name: robertdebock.service
