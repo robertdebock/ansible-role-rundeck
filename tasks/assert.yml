@@ -10,7 +10,7 @@
   assert:
     that:
       - rundeck_release_date is defined
-      - rundeck_release_date | int
+      - rundeck_release_date is number
       - rundeck_release_date | int > 0
     quiet: yes
 
@@ -25,7 +25,7 @@
   assert:
     that:
       - rundeck_xmx is defined
-      - rundeck_xmx | int
+      - rundeck_xmx is number
       - rundeck_xmx | int > rundeck_xms | int
     quiet: yes
 
@@ -33,7 +33,7 @@
   assert:
     that:
       - rundeck_xms is defined
-      - rundeck_xms | int
+      - rundeck_xms is number
       - rundeck_xms | int < rundeck_xmx | int
     quiet: yes
 
@@ -41,7 +41,7 @@
   assert:
     that:
       - rundeck_maxmetaspacesize is defined
-      - rundeck_maxmetaspacesize | int
+      - rundeck_maxmetaspacesize is number
       - rundeck_maxmetaspacesize | int < rundeck_xms | int
       - rundeck_maxmetaspacesize | int < rundeck_xmx | int
     quiet: yes
@@ -50,7 +50,7 @@
   assert:
     that:
       - rundeck_port is defined
-      - rundeck_port | int
+      - rundeck_port is number
       - rundeck_port | int > 0
       - rundeck_port | int < 65536
     quiet: yes
