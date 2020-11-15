@@ -15,7 +15,8 @@
             url: "http://{{ ansible_default_ipv4.address }}:4440/user/login"
             method: GET
           register: rundeck_connect
-          until: rundeck_connect is succeeded
+          until:
+            - rundeck_connect is succeeded
           retries: 3
       rescue:
         - name: connect to http://locahost:4440
@@ -23,5 +24,6 @@
             url: "http://localhost:4440/user/login"
             method: GET
           register: rundeck_connect
-          until: rundeck_connect is succeeded
+          until:
+            - rundeck_connect is succeeded
           retries: 3
