@@ -10,7 +10,7 @@
     that:
       - rundeck_release_date is defined
       - rundeck_release_date is number
-      - rundeck_release_date | int > 0
+      - rundeck_release_date > 0
     quiet: yes
 
 - name: test if rundeck_rdeckbase is set correctly
@@ -24,7 +24,7 @@
     that:
       - rundeck_xmx is defined
       - rundeck_xmx is number
-      - rundeck_xmx | int > rundeck_xms | int
+      - rundeck_xmx > rundeck_xms | int
     quiet: yes
 
 - name: test if rundeck_xms is set correctly
@@ -32,7 +32,7 @@
     that:
       - rundeck_xms is defined
       - rundeck_xms is number
-      - rundeck_xms | int < rundeck_xmx | int
+      - rundeck_xms < rundeck_xmx | int
     quiet: yes
 
 - name: test if rundeck_maxmetaspacesize is set correctly
@@ -40,8 +40,8 @@
     that:
       - rundeck_maxmetaspacesize is defined
       - rundeck_maxmetaspacesize is number
-      - rundeck_maxmetaspacesize | int < rundeck_xms | int
-      - rundeck_maxmetaspacesize | int < rundeck_xmx | int
+      - rundeck_maxmetaspacesize < rundeck_xms | int
+      - rundeck_maxmetaspacesize < rundeck_xmx | int
     quiet: yes
 
 - name: test if rundeck_port is set correctly
@@ -49,8 +49,8 @@
     that:
       - rundeck_port is defined
       - rundeck_port is number
-      - rundeck_port | int > 0
-      - rundeck_port | int < 65536
+      - rundeck_port > 0
+      - rundeck_port < 65536
     quiet: yes
 
 - name: test if rundeck_address is set correctly
