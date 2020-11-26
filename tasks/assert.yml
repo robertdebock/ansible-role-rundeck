@@ -1,4 +1,5 @@
 ---
+
 - name: test if rundeck_version is set correctly
   assert:
     that:
