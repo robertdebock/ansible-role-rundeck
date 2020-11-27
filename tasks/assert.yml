@@ -4,6 +4,7 @@
   assert:
     that:
       - rundeck_version is defined
+      - rundeck_version is string
     quiet: yes
 
 - name: test if rundeck_release_date is set correctly
@@ -18,6 +19,7 @@
   assert:
     that:
       - rundeck_rdeckbase is defined
+      - rundeck_rdeckbase is string
     quiet: yes
 
 - name: test if rundeck_xmx is set correctly
@@ -58,12 +60,14 @@
   assert:
     that:
       - rundeck_address is defined
+      - rundeck_address is string
     quiet: yes
 
 - name: test if rundeck_url is set correctly
   assert:
     that:
       - rundeck_url is defined
+      - rundeck_url is string
     quiet: yes
 
 - name: test if rundeck_config is set correctly
@@ -77,6 +81,7 @@
   assert:
     that:
       - item.parameter is defined
+      - item.parameter is string
       - item.value is defined
     quiet: yes
   loop: "{{ rundeck_config }}"
