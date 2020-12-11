@@ -83,7 +83,8 @@
     url: "{{ item }}"
     dest: /opt/rundeck/libext
   loop: "{{ rundeck_plugins }}"
-  when: rundeck_plugins is defined
+  when:
+    - rundeck_plugins is defined
 
 - name: start rundeck
   service:
