@@ -13,9 +13,3 @@ _rundeck_java_home:
   Fedora: /usr/lib/jvm/jre
 
 rundeck_java_home: "{{ _rundeck_java_home[ansible_distribution] | default(_rundeck_java_home['default']) }}"
-
-service_list:
-  - name: rundeck
-    description: Rundeck
-    start_command: /usr/bin/java -Xmx{{ rundeck_xmx }}m -jar rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war
-    working_directory: "{{ rundeck_rdeckbase }}"
