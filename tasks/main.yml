@@ -7,7 +7,7 @@
   delegate_to: localhost
 
 - name: create rundeck directories
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     mode: "0755"
@@ -17,7 +17,7 @@
     - "{{ rundeck_rdeckbase }}"
 
 - name: download rundeck
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ rundeck_download_url }}"
     dest: "{{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
 
@@ -28,7 +28,7 @@
     creates: "{{ rundeck_rdeckbase }}/server"
 
 - name: create rundeck service
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.service
   vars:
     service_list:
@@ -38,7 +38,7 @@
         working_directory: "{{ rundeck_rdeckbase }}"
 
 - name: configure rundeck properties
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
@@ -51,7 +51,7 @@
     label: "{{ item.parameter }}"
 
 - name: configure rundeck framework
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
     line: "{{ item.parameter }} = {{ item.value }}"
     regexp: "^{{ item.parameter }}"
@@ -64,7 +64,7 @@
     label: "{{ item.parameter }}"
 
 - name: configure rundeck policy
-  template:
+  ansible.builtin.template:
     src: admin.aclpolicy.j2
     dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
     mode: "0644"
@@ -72,7 +72,7 @@
     - restart rundeck
 
 - name: configure rundeck default users
-  template:
+  ansible.builtin.template:
     src: realm.properties.j2
     dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
     mode: "0644"
@@ -80,13 +80,13 @@
     - restart rundeck
 
 - name: create /opt/rundeck/libext
-  file:
+  ansible.builtin.file:
     path: /opt/rundeck/libext
     state: directory
     mode: "0755"
 
 - name: install plugins
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ item }}"
     dest: /opt/rundeck/libext
   loop: "{{ rundeck_plugins }}"
@@ -94,7 +94,7 @@
     - rundeck_plugins is defined
 
 - name: start rundeck
-  service:
+  ansible.builtin.service:
     name: rundeck
     state: started
     enabled: yes
