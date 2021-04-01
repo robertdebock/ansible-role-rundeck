@@ -11,7 +11,7 @@
     - name: connect to rundeck
       block:
         - name: connect to http://{{ ansible_default_ipv4.address }}:4440
-          uri:
+          ansible.builtin.uri:
             url: "http://{{ ansible_default_ipv4.address }}:4440/user/login"
             method: GET
           register: rundeck_connect
@@ -20,7 +20,7 @@
           retries: 3
       rescue:
         - name: connect to http://locahost:4440
-          uri:
+          ansible.builtin.uri:
             url: "http://localhost:4440/user/login"
             method: GET
           register: rundeck_connect
