@@ -19,6 +19,7 @@
             - rundeck_connect is succeeded
           retries: 3
       rescue:
+
         - name: connect to http://locahost:4440
           ansible.builtin.uri:
             url: "http://localhost:4440/user/login"
