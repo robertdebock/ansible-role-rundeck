@@ -166,14 +166,6 @@ The minimum version of Ansible required is 2.10, tests have been done to:
 - The current version.
 - The development version.
 
-## [Exceptions](#exceptions)
-
-Some roles can't run on a specific distribution or version. Here are some exceptions.
-
-| variation                 | reason                 |
-|---------------------------|------------------------|
-| alpine | Shutting down rundeck:  |
-
 ## [Included version(s)](#included-versions)
 
 This role [refers to a version](https://github.com/robertdebock/ansible-role-rundeck/blob/master/vars/main.yml) released by Rundeck. Check the released version(s) here:
