@@ -37,45 +37,47 @@
         start_command: /usr/bin/java -Xmx{{ rundeck_xmx }}m -jar rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war
         working_directory: "{{ rundeck_rdeckbase }}"
 
-- name: configure rundeck properties
-  ansible.builtin.lineinfile:
-    dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
-    line: "{{ item.parameter }} = {{ item.value }}"
-    regexp: "^{{ item.parameter }}"
-    create: yes
-    mode: "0644"
-  notify:
-    - restart rundeck
-  loop: "{{ rundeck_config }}"
-  loop_control:
-    label: "{{ item.parameter }}"
+- name: configure rundeck
+  block:
+    - name: configure rundeck properties
+      ansible.builtin.lineinfile:
+        dest: "{{ rundeck_rdeckbase }}/server/config/rundeck-config.properties"
+        line: "{{ item.parameter }} = {{ item.value }}"
+        regexp: "^{{ item.parameter }}"
+        create: yes
+        mode: "0644"
+      loop: "{{ rundeck_config }}"
+      loop_control:
+        label: "{{ item.parameter }}"
 
-- name: configure rundeck framework
-  ansible.builtin.lineinfile:
-    dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
-    line: "{{ item.parameter }} = {{ item.value }}"
-    regexp: "^{{ item.parameter }}"
-    create: yes
-    mode: "0644"
-  notify:
-    - restart rundeck
-  loop: "{{ rundeck_framework }}"
-  loop_control:
-    label: "{{ item.parameter }}"
+    - name: configure rundeck framework
+      ansible.builtin.lineinfile:
+        dest: "{{ rundeck_rdeckbase }}/etc/framework.properties"
+        line: "{{ item.parameter }} = {{ item.value }}"
+        regexp: "^{{ item.parameter }}"
+        create: yes
+        mode: "0644"
+      loop: "{{ rundeck_framework }}"
+      loop_control:
+        label: "{{ item.parameter }}"
 
-- name: configure rundeck policy
-  ansible.builtin.template:
-    src: admin.aclpolicy.j2
-    dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
-    mode: "0644"
-  notify:
-    - restart rundeck
+    - name: configure rundeck policy
+      ansible.builtin.template:
+        src: admin.aclpolicy.j2
+        dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
+        mode: "0644"
 
-- name: configure rundeck default users
-  ansible.builtin.template:
-    src: realm.properties.j2
-    dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
-    mode: "0644"
+    - name: configure rundeck profile
+      ansible.builtin.template:
+        src: profile.j2
+        dest: "{{ rundeck_rdeckbase }}/etc/profile"
+        mode: "0644"
+
+    - name: configure rundeck default users
+      ansible.builtin.template:
+        src: realm.properties.j2
+        dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
+        mode: "0644"
   notify:
     - restart rundeck
 
