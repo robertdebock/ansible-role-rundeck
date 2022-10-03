@@ -36,7 +36,7 @@ rundeck_config:
 #   - parameter: dataSource.password
 #     value: rundeck
 #   - parameter: dataSource.driverClassName
-#     value: com.mysql.jdbc.Driver
+#     value: org.mariadb.jdbc.Driver
 
 # The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
 rundeck_framework:
