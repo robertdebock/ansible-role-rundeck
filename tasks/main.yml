@@ -33,7 +33,7 @@
     name: robertdebock.service
   vars:
     service_list:
-      - name: Rundeck
+      - name: rundeck
         description: Rundeck
         start_command: /usr/bin/java -Xmx{{ rundeck_xmx }}m -jar rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war
         working_directory: "{{ rundeck_rdeckbase }}"
