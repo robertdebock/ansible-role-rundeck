@@ -47,8 +47,8 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for rundeck
 
 # Rundeck version to install
-rundeck_version: "4.8.0"
-rundeck_release_date: 20221110
+rundeck_version: "4.9.0"
+rundeck_release_date: 20230111
 
 # Where to install rundeck.
 rundeck_rdeckbase: /opt/rundeck
@@ -72,7 +72,7 @@ rundeck_config:
   - parameter: grails.serverURL
     value: "{{ rundeck_url }}"
   - parameter: dataSource.url
-    value: "jdbc:h2:file:/opt/rundeck/server/data/grailsdb;MVCC=true"
+    value: "jdbc:h2:file:/opt/rundeck/server/data/grailsdb"
 #   To connect to MySQL, use these settings. (Database has to be prepared.)
 #   - parameter: dataSource.url
 #     value: "jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false"
