@@ -27,7 +27,7 @@ rundeck_config:
   - parameter: grails.serverURL
     value: "{{ rundeck_url }}"
   - parameter: dataSource.url
-    value: "jdbc:h2:file:/opt/rundeck/server/data/grailsdb;MVCC=true"
+    value: "jdbc:h2:file:/opt/rundeck/server/data/grailsdb"
 #   To connect to MySQL, use these settings. (Database has to be prepared.)
 #   - parameter: dataSource.url
 #     value: "jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false"
