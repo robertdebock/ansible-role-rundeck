@@ -8,7 +8,7 @@
     - robertdebock.core_dependencies
 
   tasks:
-    - name: connect to rundeck
+    - name: Connect to rundeck
       block:
         - name: "connect to http://{{ ansible_default_ipv4.address }}:4440"
           ansible.builtin.uri:
