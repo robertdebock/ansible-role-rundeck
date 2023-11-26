@@ -1,4 +1,4 @@
-# Ansible role [rundeck](#rundeck)
+# [Ansible role rundeck](#rundeck)
 
 Install and configure rundeck on your system.
 
