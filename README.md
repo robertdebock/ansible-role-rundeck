@@ -33,6 +33,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.java
+      java_version: 11
     - role: robertdebock.common
 ```
 
@@ -47,8 +48,8 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for rundeck
 
 # Rundeck version to install
-rundeck_version: "4.15.0"
-rundeck_release_date: 20230725
+rundeck_version: "4.17.3"
+rundeck_release_date: 20231113
 
 # Where to install rundeck.
 rundeck_rdeckbase: /opt/rundeck
