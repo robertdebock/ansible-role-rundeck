@@ -28,7 +28,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 - name: Prepare
   hosts: all
   become: yes
-  gather_facts: yes
+  gather_facts: no
 
   vars:
     _java_version:
