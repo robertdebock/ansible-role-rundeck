@@ -28,12 +28,17 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
 - name: Prepare
   hosts: all
   become: yes
-  gather_facts: no
+  gather_facts: yes
+
+  vars:
+    _java_version:
+      default: 11
+      Debian-12: 17
+    java_version: "{{ _java_version[ansible_distribution_release ~ '-' ~ ansible_distribution_major_version] | default(_java_version['default']) }}"
 
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.java
-      java_version: 11
     - role: robertdebock.common
 ```
 
