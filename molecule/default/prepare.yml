@@ -7,4 +7,5 @@
   roles:
     - role: robertdebock.bootstrap
     - role: robertdebock.java
+      java_version: 11
     - role: robertdebock.common
