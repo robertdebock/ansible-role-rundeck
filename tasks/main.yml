@@ -89,16 +89,16 @@
   notify:
     - Restart rundeck
 
-- name: Create /opt/rundeck/libext
+- name: "Create {{ rundeck_rdeckbase }}/libext"
   ansible.builtin.file:
-    path: /opt/rundeck/libext
+    path: "{{ rundeck_rdeckbase }}/libext"
     state: directory
     mode: "0755"
 
 - name: Install plugins
   ansible.builtin.get_url:
     url: "{{ item }}"
-    dest: /opt/rundeck/libext
+    dest: "{{ rundeck_rdeckbase }}/libext"
     mode: "0640"
   loop: "{{ rundeck_plugins }}"
   when:
