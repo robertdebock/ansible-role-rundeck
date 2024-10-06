@@ -1,6 +1,9 @@
 ---
 # defaults file for rundeck
 
+# Owner of the installation
+rundeck_owner: rundeck
+
 # Rundeck version to install
 rundeck_version: "4.17.3"
 rundeck_release_date: 20231113

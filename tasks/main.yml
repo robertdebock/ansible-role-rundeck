@@ -12,6 +12,7 @@
     path: "{{ item }}"
     state: directory
     mode: "0755"
+    owner: "{{ rundeck_owner }}"
   loop:
     - "{{ rundeck_rdeckbase }}"
     - "{{ rundeck_rdeckbase }}/etc"
@@ -22,14 +23,17 @@
     url: "{{ rundeck_download_url }}"
     dest: "{{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
     mode: "0640"
+    owner: "{{ rundeck_owner }}"
 
 - name: Unpack rundeck
   ansible.builtin.command:
     cmd: "java -jar {{ rundeck_war }} --installonly"
     chdir: "{{ rundeck_rdeckbase }}"
     creates: "{{ rundeck_rdeckbase }}/server"
+    owner: "{{ rundeck_owner }}"
 
 - name: Create rundeck service
+  become: true
   ansible.builtin.import_role:
     name: robertdebock.service
   vars:
@@ -38,6 +42,8 @@
         description: Rundeck
         start_command: /usr/bin/java -Xmx{{ rundeck_xmx }}m -jar rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war
         working_directory: "{{ rundeck_rdeckbase }}"
+        user_name: "{{ rundeck_owner }}"
+        group_name: "{{ rundeck_owner }}"
 
 - name: Configure rundeck properties
   ansible.builtin.lineinfile:
@@ -46,6 +52,7 @@
     regexp: "^{{ item.parameter }}"
     create: true
     mode: "0644"
+    owner: "{{ rundeck_owner }}"
   loop: "{{ rundeck_config }}"
   loop_control:
     label: "{{ item.parameter }}"
@@ -59,6 +66,7 @@
     regexp: "^{{ item.parameter }}"
     create: true
     mode: "0644"
+    owner: "{{ rundeck_owner }}"
   loop: "{{ rundeck_framework }}"
   loop_control:
     label: "{{ item.parameter }}"
@@ -70,6 +78,7 @@
     src: admin.aclpolicy.j2
     dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
     mode: "0644"
+    owner: "{{ rundeck_owner }}"
   notify:
     - Restart rundeck
 
@@ -78,6 +87,7 @@
     src: profile.j2
     dest: "{{ rundeck_rdeckbase }}/etc/profile"
     mode: "0644"
+    owner: "{{ rundeck_owner }}"
   notify:
     - Restart rundeck
 
@@ -86,6 +96,7 @@
     src: realm.properties.j2
     dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
     mode: "0644"
+    owner: "{{ rundeck_owner }}"
   notify:
     - Restart rundeck
 
@@ -94,17 +105,20 @@
     path: "{{ rundeck_rdeckbase }}/libext"
     state: directory
     mode: "0755"
+    owner: "{{ rundeck_owner }}"
 
 - name: Install plugins
   ansible.builtin.get_url:
     url: "{{ item }}"
     dest: "{{ rundeck_rdeckbase }}/libext"
     mode: "0640"
+    owner: "{{ rundeck_owner }}"
   loop: "{{ rundeck_plugins }}"
   when:
     - rundeck_plugins is defined
 
 - name: Start rundeck
+  become: true
   ansible.builtin.service:
     name: rundeck
     state: started
