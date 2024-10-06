@@ -13,6 +13,7 @@
     state: directory
     mode: "0755"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
   loop:
     - "{{ rundeck_rdeckbase }}"
     - "{{ rundeck_rdeckbase }}/etc"
@@ -24,6 +25,7 @@
     dest: "{{ rundeck_rdeckbase }}/rundeck-{{ rundeck_version }}-{{ rundeck_release_date }}.war"
     mode: "0640"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
 
 - name: Unpack rundeck
   become_user: "{{ rundeck_owner }}"
@@ -53,6 +55,7 @@
     create: true
     mode: "0644"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
   loop: "{{ rundeck_config }}"
   loop_control:
     label: "{{ item.parameter }}"
@@ -67,6 +70,7 @@
     create: true
     mode: "0644"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
   loop: "{{ rundeck_framework }}"
   loop_control:
     label: "{{ item.parameter }}"
@@ -79,6 +83,7 @@
     dest: "{{ rundeck_rdeckbase }}/etc/admin.aclpolicy"
     mode: "0644"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
   notify:
     - Restart rundeck
 
@@ -88,6 +93,7 @@
     dest: "{{ rundeck_rdeckbase }}/etc/profile"
     mode: "0644"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
   notify:
     - Restart rundeck
 
@@ -97,6 +103,7 @@
     dest: "{{ rundeck_rdeckbase }}/server/config/realm.properties"
     mode: "0644"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
   notify:
     - Restart rundeck
 
@@ -106,6 +113,7 @@
     state: directory
     mode: "0755"
     owner: "{{ rundeck_owner }}"
+    group: "{{ rundeck_owner }}"
 
 - name: Install plugins
   ansible.builtin.get_url:
