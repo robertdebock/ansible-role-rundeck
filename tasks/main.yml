@@ -26,11 +26,11 @@
     owner: "{{ rundeck_owner }}"
 
 - name: Unpack rundeck
+  become_user: "{{ rundeck_owner }}"
   ansible.builtin.command:
     cmd: "java -jar {{ rundeck_war }} --installonly"
     chdir: "{{ rundeck_rdeckbase }}"
     creates: "{{ rundeck_rdeckbase }}/server"
-    owner: "{{ rundeck_owner }}"
 
 - name: Create rundeck service
   become: true
