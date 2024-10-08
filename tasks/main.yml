@@ -28,6 +28,7 @@
     group: "{{ rundeck_owner }}"
 
 - name: Unpack rundeck
+  become: true
   become_user: "{{ rundeck_owner }}"
   ansible.builtin.command:
     cmd: "java -jar {{ rundeck_war }} --installonly"
@@ -107,7 +108,7 @@
   notify:
     - Restart rundeck
 
-- name: "Create {{ rundeck_rdeckbase }}/libext"
+- name: "Create libext in {{ rundeck_rdeckbase }}"
   ansible.builtin.file:
     path: "{{ rundeck_rdeckbase }}/libext"
     state: directory
