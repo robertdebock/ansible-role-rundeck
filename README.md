@@ -2,9 +2,9 @@
 
 Install and configure rundeck on your system.
 
-|GitHub|GitLab|Downloads|Version|
-|------|------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-rundeck/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-rundeck/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-rundeck/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-rundeck)|[![downloads](https://img.shields.io/ansible/role/d/robertdebock/rundeck)](https://galaxy.ansible.com/robertdebock/rundeck)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-rundeck.svg)](https://github.com/robertdebock/ansible-role-rundeck/releases/)|
+| GitHub                                                                                                                                                                 | GitLab                                                                                                                                                     | Downloads                                                                                                                   | Version                                                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![github](https://github.com/robertdebock/ansible-role-rundeck/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-rundeck/actions) | [![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-rundeck/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-rundeck) | [![downloads](https://img.shields.io/ansible/role/d/robertdebock/rundeck)](https://galaxy.ansible.com/robertdebock/rundeck) | [![Version](https://img.shields.io/github/release/robertdebock/ansible-role-rundeck.svg)](https://github.com/robertdebock/ansible-role-rundeck/releases/) |
 
 ## [Example Playbook](#example-playbook)
 
@@ -52,6 +52,8 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 ```yaml
 ---
 # defaults file for rundeck
+
+rundeck_owner: rundeck
 
 # Rundeck version to install
 rundeck_version: "4.17.3"
@@ -143,13 +145,13 @@ rundeck_plugins: []
 
 The following roles are used to prepare a system. You can prepare your system in another way.
 
-| Requirement | GitHub | GitLab |
-|-------------|--------|--------|
-|[robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap)|
-|[robertdebock.common](https://galaxy.ansible.com/robertdebock/common)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-common/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-common/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-common/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-common)|
-|[robertdebock.core_dependencies](https://galaxy.ansible.com/robertdebock/core_dependencies)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-core_dependencies/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-core_dependencies/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-core_dependencies/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-core_dependencies)|
-|[robertdebock.java](https://galaxy.ansible.com/robertdebock/java)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-java/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-java/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-java/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-java)|
-|[robertdebock.service](https://galaxy.ansible.com/robertdebock/service)|[![Build Status GitHub](https://github.com/robertdebock/ansible-role-service/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-service/actions)|[![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-service/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-service)|
+| Requirement                                                                                 | GitHub                                                                                                                                                                                                  | GitLab                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap)                 | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions)                 | [![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-bootstrap)                 |
+| [robertdebock.common](https://galaxy.ansible.com/robertdebock/common)                       | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-common/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-common/actions)                       | [![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-common/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-common)                       |
+| [robertdebock.core_dependencies](https://galaxy.ansible.com/robertdebock/core_dependencies) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-core_dependencies/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-core_dependencies/actions) | [![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-core_dependencies/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-core_dependencies) |
+| [robertdebock.java](https://galaxy.ansible.com/robertdebock/java)                           | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-java/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-java/actions)                           | [![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-java/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-java)                           |
+| [robertdebock.service](https://galaxy.ansible.com/robertdebock/service)                     | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-service/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-service/actions)                     | [![Build Status GitLab](https://gitlab.com/robertdebock-iac/ansible-role-service/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-service)                     |
 
 ## [Context](#context)
 
@@ -162,12 +164,12 @@ Here is an overview of related roles:
 
 This role has been tested on these [container images](https://hub.docker.com/u/robertdebock):
 
-|container|tags|
-|---------|----|
-|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|9|
-|[Debian](https://hub.docker.com/r/robertdebock/debian)|all|
-|[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
-|[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
+| container                                                   | tags |
+| ----------------------------------------------------------- | ---- |
+| [EL](https://hub.docker.com/r/robertdebock/enterpriselinux) | 9    |
+| [Debian](https://hub.docker.com/r/robertdebock/debian)      | all  |
+| [Fedora](https://hub.docker.com/r/robertdebock/fedora)      | all  |
+| [Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)      | all  |
 
 The minimum version of Ansible required is 2.12, tests have been done to:
 
