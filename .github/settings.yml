@@ -5,4 +5,4 @@
 repository:
   description: Install and configure rundeck on your system.
   homepage: https://robertdebock.nl/
-  topics: rundeck, ansible, molecule, tox, playbook
+  topics: rundeck, ansible, molecule, playbook
