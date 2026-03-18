@@ -35,7 +35,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
       default: 11
       Debian-12: 17
       Ubuntu-22: 17
-    java_version: "{{ _java_version[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_java_version['default']) }}"
+    java_version: "{{ _java_version[ansible_facts['distribution'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_java_version['default']) }}"
 
   roles:
     - role: robertdebock.bootstrap
@@ -67,7 +67,7 @@ rundeck_maxmetaspacesize: 128
 
 # The URL where Rundeck will be served on:
 rundeck_port: 4440
-rundeck_address: "{{ ansible_all_ipv4_addresses[0] | default('127.0.0.1') }}"
+rundeck_address: "{{ ansible_facts['all_ipv4_addresses'][0] | default('127.0.0.1') }}"
 
 # You can change the context to for example: "/rundeck". An empty value means
 # that no specific context is added.
@@ -93,9 +93,9 @@ rundeck_config:
 # The settings for Rundeck. (Stored in: "{{ rundeck_rdeckbase }}/etc/framework.properties".)
 rundeck_framework:
   - parameter: framework.server.hostname
-    value: "{{ ansible_fqdn }}"
+    value: "{{ ansible_facts['fqdn'] }}"
   - parameter: framework.server.name
-    value: "{{ ansible_hostname }}"
+    value: "{{ ansible_facts['hostname'] }}"
   - parameter: framework.projects.dir
     value: "{{ rundeck_rdeckbase }}/projects"
   - parameter: framework.var.dir
