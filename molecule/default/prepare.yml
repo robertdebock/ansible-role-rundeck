@@ -9,7 +9,7 @@
       default: 11
       Debian-12: 17
       Ubuntu-22: 17
-    java_version: "{{ _java_version[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_java_version['default']) }}"
+    java_version: "{{ _java_version[ansible_facts['distribution'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_java_version['default']) }}"
 
   roles:
     - role: robertdebock.bootstrap

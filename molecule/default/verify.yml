@@ -10,9 +10,9 @@
   tasks:
     - name: Connect to rundeck
       block:
-        - name: "connect to http://{{ ansible_default_ipv4.address }}:4440"
+        - name: "connect to http://{{ ansible_facts['default_ipv4'].address }}:4440"
           ansible.builtin.uri:
-            url: "http://{{ ansible_default_ipv4.address }}:4440/user/login"
+            url: "http://{{ ansible_facts['default_ipv4'].address }}:4440/user/login"
             method: GET
           register: rundeck_connect
           until:
