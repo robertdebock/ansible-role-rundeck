@@ -1,6 +1,9 @@
 ---
 # defaults file for rundeck
 
+# Owner of the installation
+rundeck_owner: rundeck
+
 # Rundeck version to install
 rundeck_version: "4.17.3"
 rundeck_release_date: 20231113
@@ -27,7 +30,7 @@ rundeck_config:
   - parameter: grails.serverURL
     value: "{{ rundeck_url }}"
   - parameter: dataSource.url
-    value: "jdbc:h2:file:/opt/rundeck/server/data/grailsdb"
+    value: "jdbc:h2:file:{{ rundeck_rdeckbase }}/server/data/grailsdb"
 #   To connect to MySQL, use these settings. (Database has to be prepared.)
 #   - parameter: dataSource.url
 #     value: "jdbc:mysql://myserver/rundeck?autoReconnect=true&useSSL=false"

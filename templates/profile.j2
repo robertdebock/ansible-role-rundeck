@@ -1,5 +1,5 @@
 {{ ansible_managed | comment }}
-RDECK_BASE=/opt/rundeck
+RDECK_BASE={{ rundeck_rdeckbase }}
 export RDECK_BASE
 
 JAVA_HOME={{ rundeck_java_home }}
