@@ -5,11 +5,12 @@
   gather_facts: false
 
   vars:
+    # Rundeck needs Java 11 or 17, Java 11 is not packaged by current distributions. Fedora only has Java 25.
     _java_version:
-      default: 11
-      Debian-12: 17
-      Ubuntu-22: 17
-    java_version: "{{ _java_version[ansible_facts['distribution'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_java_version['default']) }}"
+      default: 17
+      Fedora: 25
+      Debian-13: 21
+    java_version: "{{ _java_version[ansible_facts['distribution'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_java_version[ansible_facts['distribution']] | default(_java_version['default'])) }}"
 
   roles:
     - role: robertdebock.bootstrap
