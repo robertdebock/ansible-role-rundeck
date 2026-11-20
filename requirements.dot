@@ -1,0 +1,17 @@
+digraph PhiloDilemma {
+  label = "Robert de Bock" ;
+  overlap=false
+  {
+    "rundeck" [fillcolor=yellow style=filled penwidth=3]
+    "robertdebock.bootstrap" [fillcolor=green style=filled]
+    "robertdebock.common" [fillcolor=green style=filled]
+    "robertdebock.core_dependencies" [fillcolor=green style=filled]
+    "robertdebock.java" [fillcolor=green style=filled]
+    "robertdebock.service" [fillcolor=green style=filled]
+  }
+  "rundeck" -> "robertdebock.bootstrap"
+  "rundeck" -> "robertdebock.common"
+  "rundeck" -> "robertdebock.core_dependencies"
+  "rundeck" -> "robertdebock.java"
+  "rundeck" -> "robertdebock.service"
+}
