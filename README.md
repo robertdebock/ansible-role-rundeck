@@ -31,11 +31,12 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
   gather_facts: false
 
   vars:
+    # Rundeck needs Java 11 or 17, Java 11 is not packaged by current distributions. Fedora only has Java 25.
     _java_version:
-      default: 11
-      Debian-12: 17
-      Ubuntu-22: 17
-    java_version: "{{ _java_version[ansible_facts['distribution'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_java_version['default']) }}"
+      default: 17
+      Fedora: 25
+      Debian-13: 21
+    java_version: "{{ _java_version[ansible_facts['distribution'] ~ '-' ~ ansible_facts['distribution_major_version']] | default(_java_version[ansible_facts['distribution']] | default(_java_version['default'])) }}"
 
   roles:
     - role: robertdebock.bootstrap
@@ -54,8 +55,8 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 # defaults file for rundeck
 
 # Rundeck version to install
-rundeck_version: "4.17.3"
-rundeck_release_date: 20231113
+rundeck_version: "6.3.0"
+rundeck_release_date: 20261022
 
 # Where to install rundeck.
 rundeck_rdeckbase: /opt/rundeck
@@ -169,11 +170,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |[Fedora](https://hub.docker.com/r/robertdebock/fedora)|all|
 |[Ubuntu](https://hub.docker.com/r/robertdebock/ubuntu)|all|
 
-The minimum version of Ansible required is 2.12, tests have been done on:
-
-- The previous version.
-- The current version.
-- The development version.
+The minimum version of Ansible (ansible-core) required is 2.20, tests are done with the latest release of ansible-core.
 
 If you find issues, please register them on [GitHub](https://github.com/robertdebock/ansible-role-rundeck/issues).
 
